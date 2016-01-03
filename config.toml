@@ -1,0 +1,23 @@
+baseurl = "http://benbailey.me/"
+languageCode = "en-us"
+title = "benfb"
+theme = "hyde-x"
+pygmentsstyle = "autumn"
+
+[permalinks]
+    post = "/:year/:month/:filename/"
+    code = "/:filename/"
+
+[params]
+    theme = "theme-base-08"
+    home = "Home"
+    highlight = "sunburst"
+    truncate = false
+    rss = true
+    tagline = "A curious, empathetic student looking forward to the world."
+    email = "mailto:benbailey@protonmail.com"
+    twitter = "https://twitter.com/bennett"
+    github = "https://github.com/benfb"
+
+[taxonomies]
+    category = "categories"
