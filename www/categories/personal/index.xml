@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal on benfb</title>
+    <link>http://benbailey.me/categories/personal/</link>
+    <description>Recent content in Personal on benfb</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2015 18:54:14 -0500</lastBuildDate>
+    <atom:link href="http://benbailey.me/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About</title>
+      <link>http://benbailey.me/about/</link>
+      <pubDate>Sun, 28 Jun 2015 18:54:14 -0500</pubDate>
+      
+      <guid>http://benbailey.me/about/</guid>
+      <description>&lt;p&gt;Operations intern at Return Path, attending Hampshire College. I like music, games, and books. Diving into the world of Docker.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

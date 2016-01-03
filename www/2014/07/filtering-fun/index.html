@@ -1,0 +1,205 @@
+	<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.15" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title> Filtering Fun &middot; benfb </title>
+
+  
+  <link rel="stylesheet" href="http://benbailey.me/css/poole.css">
+  <link rel="stylesheet" href="http://benbailey.me/css/syntax.css">
+  <link rel="stylesheet" href="http://benbailey.me/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald|Raleway:400,500,600,700|Merriweather" type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="benfb" />
+</head>
+
+	<body class="theme-base-08">
+		<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://benbailey.me/"><h1>benfb</h1></a>
+      <p class="lead">
+       A curious, empathetic student looking forward to the world. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="/">Home</a> </li>
+      
+        <li><a href="/about/"> About </a></li>
+      
+      <br>
+      
+        <li>Code:</li>
+          
+            <li><a href="/cumulus/">cumulus </a></li>
+          
+            <li><a href="/go-tumblr/">go-tumblr </a></li>
+          
+            <li><a href="/trackseeker/">trackseeker </a></li>
+          
+      
+    </ul>
+
+    <a href="mailto:bennettbailey@gmail.com"><i class="fa fa-envelope"></i></a>&nbsp;&nbsp;
+    <a href="https://twitter.com/bennett"><i class="fa fa-twitter-square"></i></a>&nbsp;&nbsp;
+    <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
+
+    <p>&copy; 2016. All rights reserved. </p>
+  </div>
+</div>
+
+
+		<div class="content container">
+			<div class="post">
+			 	<h1>Filtering Fun</h1>
+				
+			  	<span class="post-date">Wed, Jul 23, 2014</span>
+				
+			      
+
+<p>Last year my high school implemented a draconian network filter. The school district had always erred on the side of caution when it came to network filtering, putting faith in blacklists over students&rsquo; willpower.</p>
+
+<p>It was interesting to watch the filter develop over the years; in eighth grade you could bypass the filter just by using https, in tenth grade a VPN was more than sufficient. Last year, however, the district implemented UltraSurf. I&rsquo;m not sure if they used a built-in blacklist or (more likely) paid a security company a large sum to develop one for them, but it was highly effective. Much too effective. Sites like tumblr were blocked for &ldquo;prohibited friendship content.&rdquo; If you made enough &ldquo;suspicious&rdquo; Google searches, your MAC address was blacklisted for an hour. Most ports were blocked, including <code>:22</code> (ssh).</p>
+
+<p>I took an independent study class last year. Most of the class hosted projects on Github. To clone a git repository from Github, you need to use ssh. (Or https, but the district blocked that as well). We had a few developers from the community come in to help us with our projects, and one suggested using <code>netcat</code> to examine how the filter was shutting down ssh traffic. (It&rsquo;s important to note that ssh via other ports didn&rsquo;t work either.) Using <code>netcat</code>, we figured out that the filter looked for a specific pattern in the ssh version 2 header that the version 1 header didn&rsquo;t match. I went home that night and worked on getting my home Raspberry Pi running ssh version 1 so I could tunnel from school to my house, bypassing the filter. The steps I took are listed below.</p>
+
+<ol>
+<li>Add <code>Port 443</code> to sshd_config</li>
+<li>Switch <code>Protocol</code> line to <code>1,2</code> instead of <code>2</code></li>
+<li>Run <code>ssh-keygen -t rsa1</code> to generate a host key with no passphrase and save it as <code>/etc/ssh/ssh_host_key</code></li>
+<li>Add <code>HostKey /etc/ssh/ssh_host_key</code> to the sshd_config</li>
+<li>For tunneling purposes, add the <code>PermitTunnel yes</code> to the config file</li>
+</ol>
+
+<p>That should be all the necessary changes, but I included the full file below. As a bonus, I transferred the file using netcat:</p>
+
+<ol>
+<li>(on the server) <code>cat/etc/ssh/sshd_config | nc $DESTINATION_IP 9999</code></li>
+<li>(on the client) <code>nc -l 9999 &gt; ~/Desktop/sshd_config</code></li>
+</ol>
+
+<p>Below is the finalized sshd_config file:
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
+<span style="color: #aaaaaa; font-style: italic"># See the sshd_config(5) manpage for details</span>
+
+<span style="color: #aaaaaa; font-style: italic"># What ports, IPs and protocols we listen for</span>
+Port 22
+Port 443
+
+Protocol 1,2
+
+HostKey /etc/ssh/ssh_host_key
+
+<span style="color: #aaaaaa; font-style: italic"># HostKeys for protocol version 2</span>
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+<span style="color: #aaaaaa; font-style: italic">#Privilege Separation is turned on for security</span>
+UsePrivilegeSeparation yes
+
+<span style="color: #aaaaaa; font-style: italic"># Lifetime and size of ephemeral version 1 server key</span>
+KeyRegenerationInterval 3600
+ServerKeyBits 768
+
+<span style="color: #aaaaaa; font-style: italic"># Logging</span>
+SyslogFacility AUTH
+LogLevel INFO
+
+<span style="color: #aaaaaa; font-style: italic"># Authentication:</span>
+LoginGraceTime 120
+PermitRootLogin yes
+StrictModes yes
+
+RSAAuthentication yes
+PubkeyAuthentication yes
+<span style="color: #aaaaaa; font-style: italic">#AuthorizedKeysFile  %h/.ssh/authorized_keys</span>
+
+PermitTunnel yes
+
+<span style="color: #aaaaaa; font-style: italic"># Don&#39;t read the user&#39;s ~/.rhosts and ~/.shosts files</span>
+IgnoreRhosts yes
+<span style="color: #aaaaaa; font-style: italic"># For this to work you will also need host keys in /etc/ssh_known_hosts</span>
+RhostsRSAAuthentication no
+<span style="color: #aaaaaa; font-style: italic"># similar for protocol version 2</span>
+HostbasedAuthentication no
+<span style="color: #aaaaaa; font-style: italic"># Uncomment if you don&#39;t trust ~/.ssh/known_hosts for RhostsRSAAuthentication</span>
+<span style="color: #aaaaaa; font-style: italic">#IgnoreUserKnownHosts yes</span>
+
+<span style="color: #aaaaaa; font-style: italic"># To enable empty passwords, change to yes (NOT RECOMMENDED)</span>
+PermitEmptyPasswords yes
+
+<span style="color: #aaaaaa; font-style: italic"># Change to yes to enable challenge-response passwords (beware issues with</span>
+<span style="color: #aaaaaa; font-style: italic"># some PAM modules and threads)</span>
+ChallengeResponseAuthentication no
+
+<span style="color: #aaaaaa; font-style: italic"># Change to no to disable tunnelled clear text passwords</span>
+PasswordAuthentication yes
+
+X11Forwarding yes
+X11DisplayOffset 10
+PrintMotd no
+PrintLastLog yes
+TCPKeepAlive yes
+<span style="color: #aaaaaa; font-style: italic">#UseLogin no</span>
+
+<span style="color: #aaaaaa; font-style: italic"># Allow client to pass locale environment variables</span>
+AcceptEnv LANG LC_*
+
+Subsystem sftp /usr/lib/openssh/sftp-server
+
+UsePAM yes
+</pre></div>
+</p>
+
+<p>Here&rsquo;s how to use that server as a tunnel for web traffic.</p>
+
+<h2 id="on-osx:139ebcb8a03645e5033ee060de694768">On OSX</h2>
+
+<ol>
+<li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
+<li>Open System Preferences and go to <code>Network</code>.</li>
+<li>Click on <code>Advanced</code>, then <code>Proxies</code>.</li>
+<li>Check the box next to <code>SOCKS Proxy</code>, and type in <code>127.0.0.1</code> as the server, and <code>8080</code> as the port.</li>
+<li>Save your settings (make sure you hit <code>Apply</code>) and enjoy!</li>
+<li>(You may need to tell your browser to use system proxy settings).</li>
+</ol>
+
+<h2 id="on-linux:139ebcb8a03645e5033ee060de694768">On Linux</h2>
+
+<ol>
+<li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
+<li>Configure your browser to use a SOCKS5 proxy on <code>localhost:8080</code>.</li>
+</ol>
+
+<h2 id="on-windows:139ebcb8a03645e5033ee060de694768">On Windows</h2>
+
+<ol>
+<li>Download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>.</li>
+<li>Open PuTTY. Under the Session tab, put in the host name of the server you set up (or its IP address).</li>
+<li>Expand the SSH tab and select Tunnels. For source port, put in 8080, and select <code>Dynamic</code>.</li>
+<li>Leave the hostname blank, click <code>OK</code>.</li>
+<li>Click open, or go back to the Sessions tab and save the configuration so you can load it later.</li>
+<li>Browse to a normally-blocked site. You should be able to access it. If not, try setting your browser to use a SOCKS5 proxy with <code>localhost</code> as the host and <code>8080</code> as the port.</li>
+</ol>
+
+<p>This setup continued to work for the rest of the year, and should still work now.</p>
+
+			</div>
+		</div>
+
+  </body>
+</html>
