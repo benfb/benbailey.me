@@ -1,0 +1,21 @@
+  {{ partial "head.html" . }}
+  <body class="{{ .Site.Params.themeColor }}">
+    {{ partial "sidebar.html" . }}
+
+    <div class="content container">
+      <div class="post">
+        <h1>{{ .Title }}
+            {{if .Params.badges}}
+              <span class="badges">
+                  {{range .Params.badges}}
+                     <a href="{{.URL}}"><img class="badge" title="{{.alt}}" alt="{{.alt}}" src="{{.img}}"></a>
+                  {{end}}
+              </span>
+            {{end}}
+        </h1>
+        {{ .Content }}
+      </div>
+    </div>
+
+  </body>
+</html>
