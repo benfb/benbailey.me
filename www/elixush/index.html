@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> go-tumblr &middot; benfb </title>
+  <title> elixush &middot; benfb </title>
 
   
   <link rel="stylesheet" href="http://benbailey.me/css/poole.css">
@@ -67,16 +67,38 @@
 
     <div class="content container">
       <div class="post">
-        <h1>go-tumblr
-            
-              <span class="badges">
-                  
-                     <a href="https://godoc.org/github.com/benfb/go-tumblr/tumblr"><img class="badge" title="GoDoc" alt="GoDoc" src="https://godoc.org/github.com/benfb/go-tumblr/tumblr?status.svg"></a>
-                  
-              </span>
+        <h1>elixush
             
         </h1>
-        <p>A work-in-progress client for the Tumblr API written in Go.</p>
+        
+
+<h4 id="cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:79b3346ee6d60c2f6cd00b018ebc141b">Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates</h4>
+
+<pre><code>go get github.com/benfb/cumulus
+go install github.com/benfb/cumulus
+</code></pre>
+
+<h3 id="why:79b3346ee6d60c2f6cd00b018ebc141b">Why?</h3>
+
+<p>CoreOS is a great operating system for running Docker contianers, and it can be configured easily using <a href="https://coreos.com/os/docs/latest/cloud-config.html">Cloud-Config</a>. However, if you want to use Amazon&rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.</p>
+
+<h3 id="example:79b3346ee6d60c2f6cd00b018ebc141b">Example</h3>
+
+<p>This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.</p>
+
+<p><code>cumulus inject cloud-config.yaml cloud-formation.json 146 267</code></p>
+
+<p>Alternatively, you can just format the cloud-config and write it to a file.</p>
+
+<p><code>cumulus format cloud-config.yaml --out cloud-formation.json</code></p>
+
+<p>Or you can output to STDOUT and pipe the output somewhere else.</p>
+
+<p><code>cumulus format cloud-config.yaml | cat -n</code></p>
+
+<p>Finally, if you&rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.</p>
+
+<p><code>cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267</code></p>
 
       </div>
     </div>

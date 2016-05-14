@@ -48,6 +48,44 @@ go install github.com/benfb/cumulus
     </item>
     
     <item>
+      <title>elixush</title>
+      <link>http://benbailey.me/elixush/</link>
+      <pubDate>Wed, 15 Jul 2015 13:46:42 -0500</pubDate>
+      
+      <guid>http://benbailey.me/elixush/</guid>
+      <description>
+
+&lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/benfb/cumulus
+go install github.com/benfb/cumulus
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;why:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Why?&lt;/h3&gt;
+
+&lt;p&gt;CoreOS is a great operating system for running Docker contianers, and it can be configured easily using &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;. However, if you want to use Amazon&amp;rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.&lt;/p&gt;
+
+&lt;h3 id=&#34;example:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cumulus inject cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can just format the cloud-config and write it to a file.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml --out cloud-formation.json&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Or you can output to STDOUT and pipe the output somewhere else.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml | cat -n&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Finally, if you&amp;rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>trackseeker</title>
       <link>http://benbailey.me/trackseeker/</link>
       <pubDate>Mon, 29 Jun 2015 00:06:56 -0500</pubDate>
