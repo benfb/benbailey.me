@@ -55,33 +55,77 @@ go install github.com/benfb/cumulus
       <guid>http://benbailey.me/elixush/</guid>
       <description>
 
-&lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
+&lt;h4 id=&#34;elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Elixush is an Elixir-based interpreter for the &lt;a href=&#34;http://pushlanguage.org&#34;&gt;Push genetic programming language&lt;/a&gt;.&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;go get github.com/benfb/cumulus
-go install github.com/benfb/cumulus
+&lt;h3 id=&#34;reasoning:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Reasoning&lt;/h3&gt;
+
+&lt;p&gt;Elixir runs every function in its own process on the virtual machine. The Elixir
+virtual machine has a much faster startup time than the JVM. The well-established
+OTP architecture in place here makes concurrency and parallelism much easier to
+implement than in Clojush. By focusing only on the interpreter rather than actual
+genetic programming, Elixush is much easier to maintain. Elixir conventions are
+generally followed, making the code relatively easy to understand at a glance. The
+way the interpreter is structured makes it easy to add new instructions and types.
+The project also attempts to widen Push&amp;rsquo;s audience, as it opens up Push to the Elixir
+community. Theoretically, Elixush &lt;em&gt;should&lt;/em&gt; run better on clusters than Clojush, but
+some testing is still necessary.&lt;/p&gt;
+
+&lt;h3 id=&#34;getting-started:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Getting Started&lt;/h3&gt;
+
+&lt;p&gt;To run Elixush, you&amp;rsquo;ll need to install Elixir. The official instructions for how
+to do so can be found &lt;a href=&#34;http://elixir-lang.org/install.html&#34;&gt;here&lt;/a&gt;. If you have a
+Mac, a simple &lt;code&gt;brew install elixir&lt;/code&gt; should suffice.&lt;/p&gt;
+
+&lt;p&gt;Installing the Elixir language also installs the Erlang virtual machine, as well
+as Elixir&amp;rsquo;s interactive shell (REPL), IEx. Once Elixir is installed, run &lt;code&gt;mix deps.get&lt;/code&gt;
+to install the requisite dependencies, then &lt;code&gt;mix deps.compile&lt;/code&gt; to compile them.
+You can then run &lt;code&gt;iex -S mix&lt;/code&gt; in the Elixush directory and it will start up a REPL
+with Elixush loaded in.&lt;/p&gt;
+
+&lt;p&gt;Elixush includes a &amp;ldquo;Server&amp;rdquo; that takes Push programs as lists of instructions.
+This server can be accessed by calling &lt;code&gt;Elixush.Server.run_program&lt;/code&gt; from the REPL,
+followed by a list of instructions, such as &lt;code&gt;Elixush.Server.run_program [1, 2, :integer_add]&lt;/code&gt;.
+This will print out the stack state at the end of the program&amp;rsquo;s execution, or in
+this case the following map:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
+  exec: [], float: [], genome: [], input: [], integer: [3],
+  output: [], return: [], string: [], tag: [],
+  termination: :normal, vector_boolean: [], vector_float: [],
+  vector_integer: [], vector_string: [], zip: []}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;why:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Why?&lt;/h3&gt;
+&lt;p&gt;If the program crashes the server for some reason, a Supervisor will simply restart
+the server process in the background, following Elixir&amp;rsquo;s let-it-crash mentality.
+The REPL process can be exited by pressing &lt;code&gt;CTRL-C&lt;/code&gt; twice.&lt;/p&gt;
 
-&lt;p&gt;CoreOS is a great operating system for running Docker contianers, and it can be configured easily using &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;. However, if you want to use Amazon&amp;rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.&lt;/p&gt;
+&lt;h3 id=&#34;running:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Running&lt;/h3&gt;
 
-&lt;h3 id=&#34;example:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Example&lt;/h3&gt;
+&lt;p&gt;For now, the best way to run Push programs is IEx:&lt;/p&gt;
 
-&lt;p&gt;This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ iex -S mix
 
-&lt;p&gt;&lt;code&gt;cumulus inject cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
+Compiled lib/elixush.ex
 
-&lt;p&gt;Alternatively, you can just format the cloud-config and write it to a file.&lt;/p&gt;
+iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
 
-&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml --out cloud-formation.json&lt;/code&gt;&lt;/p&gt;
+%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
+  exec: [], float: [], genome: [], input: [], integer: [-1],
+  output: [], return: [], string: [], tag: [],
+  termination: :normal, vector_boolean: [], vector_float: [],
+  vector_integer: [], vector_string: [], zip: []}
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Or you can output to STDOUT and pipe the output somewhere else.&lt;/p&gt;
+&lt;h3 id=&#34;roadmap:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Roadmap&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml | cat -n&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally, if you&amp;rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clean up codebase&lt;/li&gt;
+&lt;li&gt;Finish porting over instructions from Clojush&lt;/li&gt;
+&lt;li&gt;Add tests!&lt;/li&gt;
+&lt;li&gt;Make a standalone executable?&lt;/li&gt;
+&lt;li&gt;Implement GP?&lt;/li&gt;
+&lt;li&gt;Implement Plush?&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

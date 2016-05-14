@@ -72,33 +72,77 @@
         </h1>
         
 
-<h4 id="cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:79b3346ee6d60c2f6cd00b018ebc141b">Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates</h4>
+<h4 id="elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org:79b3346ee6d60c2f6cd00b018ebc141b">Elixush is an Elixir-based interpreter for the <a href="http://pushlanguage.org">Push genetic programming language</a>.</h4>
 
-<pre><code>go get github.com/benfb/cumulus
-go install github.com/benfb/cumulus
+<h3 id="reasoning:79b3346ee6d60c2f6cd00b018ebc141b">Reasoning</h3>
+
+<p>Elixir runs every function in its own process on the virtual machine. The Elixir
+virtual machine has a much faster startup time than the JVM. The well-established
+OTP architecture in place here makes concurrency and parallelism much easier to
+implement than in Clojush. By focusing only on the interpreter rather than actual
+genetic programming, Elixush is much easier to maintain. Elixir conventions are
+generally followed, making the code relatively easy to understand at a glance. The
+way the interpreter is structured makes it easy to add new instructions and types.
+The project also attempts to widen Push&rsquo;s audience, as it opens up Push to the Elixir
+community. Theoretically, Elixush <em>should</em> run better on clusters than Clojush, but
+some testing is still necessary.</p>
+
+<h3 id="getting-started:79b3346ee6d60c2f6cd00b018ebc141b">Getting Started</h3>
+
+<p>To run Elixush, you&rsquo;ll need to install Elixir. The official instructions for how
+to do so can be found <a href="http://elixir-lang.org/install.html">here</a>. If you have a
+Mac, a simple <code>brew install elixir</code> should suffice.</p>
+
+<p>Installing the Elixir language also installs the Erlang virtual machine, as well
+as Elixir&rsquo;s interactive shell (REPL), IEx. Once Elixir is installed, run <code>mix deps.get</code>
+to install the requisite dependencies, then <code>mix deps.compile</code> to compile them.
+You can then run <code>iex -S mix</code> in the Elixush directory and it will start up a REPL
+with Elixush loaded in.</p>
+
+<p>Elixush includes a &ldquo;Server&rdquo; that takes Push programs as lists of instructions.
+This server can be accessed by calling <code>Elixush.Server.run_program</code> from the REPL,
+followed by a list of instructions, such as <code>Elixush.Server.run_program [1, 2, :integer_add]</code>.
+This will print out the stack state at the end of the program&rsquo;s execution, or in
+this case the following map:</p>
+
+<pre><code>%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
+  exec: [], float: [], genome: [], input: [], integer: [3],
+  output: [], return: [], string: [], tag: [],
+  termination: :normal, vector_boolean: [], vector_float: [],
+  vector_integer: [], vector_string: [], zip: []}
 </code></pre>
 
-<h3 id="why:79b3346ee6d60c2f6cd00b018ebc141b">Why?</h3>
+<p>If the program crashes the server for some reason, a Supervisor will simply restart
+the server process in the background, following Elixir&rsquo;s let-it-crash mentality.
+The REPL process can be exited by pressing <code>CTRL-C</code> twice.</p>
 
-<p>CoreOS is a great operating system for running Docker contianers, and it can be configured easily using <a href="https://coreos.com/os/docs/latest/cloud-config.html">Cloud-Config</a>. However, if you want to use Amazon&rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.</p>
+<h3 id="running:79b3346ee6d60c2f6cd00b018ebc141b">Running</h3>
 
-<h3 id="example:79b3346ee6d60c2f6cd00b018ebc141b">Example</h3>
+<p>For now, the best way to run Push programs is IEx:</p>
 
-<p>This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.</p>
+<pre><code>$ iex -S mix
 
-<p><code>cumulus inject cloud-config.yaml cloud-formation.json 146 267</code></p>
+Compiled lib/elixush.ex
 
-<p>Alternatively, you can just format the cloud-config and write it to a file.</p>
+iex(1)&gt; Elixush.Server.run_program [1, 2, :integer_sub]
 
-<p><code>cumulus format cloud-config.yaml --out cloud-formation.json</code></p>
+%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
+  exec: [], float: [], genome: [], input: [], integer: [-1],
+  output: [], return: [], string: [], tag: [],
+  termination: :normal, vector_boolean: [], vector_float: [],
+  vector_integer: [], vector_string: [], zip: []}
+</code></pre>
 
-<p>Or you can output to STDOUT and pipe the output somewhere else.</p>
+<h3 id="roadmap:79b3346ee6d60c2f6cd00b018ebc141b">Roadmap</h3>
 
-<p><code>cumulus format cloud-config.yaml | cat -n</code></p>
-
-<p>Finally, if you&rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.</p>
-
-<p><code>cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267</code></p>
+<ul>
+<li>Clean up codebase</li>
+<li>Finish porting over instructions from Clojush</li>
+<li>Add tests!</li>
+<li>Make a standalone executable?</li>
+<li>Implement GP?</li>
+<li>Implement Plush?</li>
+</ul>
 
       </div>
     </div>
