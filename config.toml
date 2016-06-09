@@ -1,4 +1,4 @@
-baseurl = "http://benbailey.me/"
+baseurl = "https://benbailey.me/"
 languageCode = "en-us"
 title = "benfb"
 theme = "hyde"
