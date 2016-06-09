@@ -204,7 +204,7 @@ fmt.Println(res[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;].Serie
 
 &lt;p&gt;I want to extract the hidden track from Beach House&amp;rsquo;s &amp;ldquo;Irene.&amp;rdquo; The song is currently 16 minutes long, with about seven minutes of silence between the album closer and the hidden track. I run the command:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;trackseeker --artist=&amp;quot;Beach House&amp;quot; --album=&amp;quot;Bloom&amp;quot; --track=&amp;quot;Irene&amp;quot; --num=&amp;quot;10&amp;quot; --fmt=&amp;quot;m4a&amp;quot;&lt;/code&gt;`&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;trackseeker --artist=&amp;quot;Beach House&amp;quot; --album=&amp;quot;Bloom&amp;quot; --track=&amp;quot;Irene&amp;quot; --num=&amp;quot;10&amp;quot; --fmt=&amp;quot;m4a&amp;quot;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;After a few minutes, two new songs are added to my iTunes library, the shortened version of &amp;ldquo;Irene&amp;rdquo; and the hidden track titled &amp;ldquo;(Hidden Track)&amp;rdquo;. In this case, Trackseeker removed seven minutes of silence and saved 14 MB of space. Not bad!&lt;/p&gt;
 

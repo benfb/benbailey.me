@@ -19,7 +19,7 @@ To install Trackseeker, just type `pip install trackseeker` and pip will install
 ### Example
 I want to extract the hidden track from Beach House's "Irene." The song is currently 16 minutes long, with about seven minutes of silence between the album closer and the hidden track. I run the command:
 
-`trackseeker --artist="Beach House" --album="Bloom" --track="Irene" --num="10" --fmt="m4a"``
+`trackseeker --artist="Beach House" --album="Bloom" --track="Irene" --num="10" --fmt="m4a"`
 
 After a few minutes, two new songs are added to my iTunes library, the shortened version of "Irene" and the hidden track titled "(Hidden Track)". In this case, Trackseeker removed seven minutes of silence and saved 14 MB of space. Not bad!
 
