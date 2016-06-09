@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on benfb</title>
-    <link>http://benbailey.me/post/</link>
+    <link>https://benbailey.me/post/</link>
     <description>Recent content in Posts on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Jun 2015 17:12:39 -0500</lastBuildDate>
-    <atom:link href="http://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Docker Metrics with Telegraf</title>
-      <link>http://benbailey.me/2015/06/docker-telegraf-metrics/</link>
+      <link>https://benbailey.me/2015/06/docker-telegraf-metrics/</link>
       <pubDate>Tue, 30 Jun 2015 17:12:39 -0500</pubDate>
       
-      <guid>http://benbailey.me/2015/06/docker-telegraf-metrics/</guid>
+      <guid>https://benbailey.me/2015/06/docker-telegraf-metrics/</guid>
       <description>&lt;p&gt;With the &lt;a href=&#34;https://influxdb.com/blog/2015/06/11/InfluxDB-v0_9_0-released-with-developer-and-production-support.html&#34;&gt;release of InfluxDB v0.9&lt;/a&gt;, I was eager to start using Google&amp;rsquo;s &lt;a href=&#34;https://github.com/google/cadvisor&#34;&gt;cAdvisor&lt;/a&gt; to begin collecting metrics from Docker containers. Unfortunately, the new InfluxDB version comes with a new breaking API that cAdvisor still isn&amp;rsquo;t compatible with. Not only does cAdvisor not support the new API, it&amp;rsquo;s currently impossible to successfully run &lt;code&gt;go get github.com/google/cadvisor&lt;/code&gt; because of this issue. After struggling with cAdvisor for a month, I learned that InfluxDB &lt;a href=&#34;https://influxdb.com/blog/2015/06/19/Announcing-Telegraf-a-metrics-collector-for-InfluxDB.html&#34;&gt;recently rolled out&lt;/a&gt; their own metrics collector, &lt;a href=&#34;https://github.com/influxdb/telegraf&#34;&gt;Telegraf&lt;/a&gt;, which is pretty much guaranteed to have the best InfluxDB integration possible.&lt;/p&gt;
 
 &lt;p&gt;The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:36b3bb62bd22090f4d554b16a9e1bc44:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:36b3bb62bd22090f4d554b16a9e1bc44:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to &lt;code&gt;localhost&lt;/code&gt;.&lt;/p&gt;
@@ -62,10 +62,10 @@ fmt.Println(res[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;].Serie
     
     <item>
       <title>Filtering Fun</title>
-      <link>http://benbailey.me/2014/07/filtering-fun/</link>
+      <link>https://benbailey.me/2014/07/filtering-fun/</link>
       <pubDate>Wed, 23 Jul 2014 18:54:22 -0500</pubDate>
       
-      <guid>http://benbailey.me/2014/07/filtering-fun/</guid>
+      <guid>https://benbailey.me/2014/07/filtering-fun/</guid>
       <description>
 
 &lt;p&gt;Last year my high school implemented a draconian network filter. The school district had always erred on the side of caution when it came to network filtering, putting faith in blacklists over students&amp;rsquo; willpower.&lt;/p&gt;
@@ -199,10 +199,10 @@ UsePAM yes
     
     <item>
       <title>I wish I&#39;d written you a letter</title>
-      <link>http://benbailey.me/2014/07/ned-vizzini/</link>
+      <link>https://benbailey.me/2014/07/ned-vizzini/</link>
       <pubDate>Sun, 20 Jul 2014 21:16:36 -0500</pubDate>
       
-      <guid>http://benbailey.me/2014/07/ned-vizzini/</guid>
+      <guid>https://benbailey.me/2014/07/ned-vizzini/</guid>
       <description>&lt;p&gt;I spent the afternoon lost in Ned Vizzini’s &lt;em&gt;Teen Angst? Naah…&lt;/em&gt;, a collection of short essays about his experiences as a teenager. It’s candid, thoughtful, and entertaining.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class=&#34;more&#34;&gt;&lt;/p&gt;
@@ -235,10 +235,10 @@ UsePAM yes
     
     <item>
       <title>Stop Making Sense</title>
-      <link>http://benbailey.me/2014/04/stop-making-sense/</link>
+      <link>https://benbailey.me/2014/04/stop-making-sense/</link>
       <pubDate>Sun, 06 Apr 2014 21:17:54 -0500</pubDate>
       
-      <guid>http://benbailey.me/2014/04/stop-making-sense/</guid>
+      <guid>https://benbailey.me/2014/04/stop-making-sense/</guid>
       <description>&lt;p&gt;I’ll always remember the first time I heard David Byrne say “Hi. I’ve got a tape I want to play.” As soon as he walks out onto the stage and pops a tape in his boom box, you know you’re in for a treat.&lt;/p&gt;
 
 &lt;p&gt;&lt;span class=&#34;more&#34;&gt;&lt;/p&gt;
@@ -261,10 +261,10 @@ UsePAM yes
     
     <item>
       <title>My First Foray Into Game Making</title>
-      <link>http://benbailey.me/2011/08/game-making/</link>
+      <link>https://benbailey.me/2011/08/game-making/</link>
       <pubDate>Thu, 04 Aug 2011 21:19:51 -0500</pubDate>
       
-      <guid>http://benbailey.me/2011/08/game-making/</guid>
+      <guid>https://benbailey.me/2011/08/game-making/</guid>
       <description>&lt;p&gt;This past weekend I went to Dallas to visit a friend. We&amp;rsquo;d always shared an interest in games, but over the last six months, my friend had actually started to code his own games from scratch. Quite frankly, I was impressed. While I&amp;rsquo;ve delved into many different coding projects over the last few months, I&amp;rsquo;d actually forgotten about one of my original goals; to develop a game. While my friend&amp;rsquo;s games were not masterpieces, he had made several fun clones of games like Mario Kart, and a maze game with Pokemon sprites. Most of these he coded in DarkBasic.&lt;/p&gt;
 
 &lt;p&gt;Naturally, after playing around with the games a bit, we decided to continue improving them. Coding isn&amp;rsquo;t much of a two-person job though, so eventually I started work on my text-based RPG I wrote in Ruby two years ago. It seems that we both have a touch of programming ADD though, and my friend started a new 2D fighting game (which I&amp;rsquo;ll add is coming along nicely) and I wrote &lt;a href=&#34;https://gist.github.com/1126940&#34;&gt;restaurbot&lt;/a&gt;, a simple and comical restaurant robot.&lt;/p&gt;

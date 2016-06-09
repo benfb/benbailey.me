@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on benfb</title>
-    <link>http://benbailey.me/tags/development/</link>
+    <link>https://benbailey.me/tags/development/</link>
     <description>Recent content in Development on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 29 Jun 2015 00:06:56 -0500</lastBuildDate>
-    <atom:link href="http://benbailey.me/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://benbailey.me/tags/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>trackseeker</title>
-      <link>http://benbailey.me/trackseeker/</link>
+      <link>https://benbailey.me/trackseeker/</link>
       <pubDate>Mon, 29 Jun 2015 00:06:56 -0500</pubDate>
       
-      <guid>http://benbailey.me/trackseeker/</guid>
+      <guid>https://benbailey.me/trackseeker/</guid>
       <description>
 
 &lt;h3 id=&#34;welcome-to-trackseeker:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Welcome to Trackseeker.&lt;/h3&gt;

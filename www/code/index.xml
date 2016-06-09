@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Codes on benfb</title>
-    <link>http://benbailey.me/code/</link>
+    <link>https://benbailey.me/code/</link>
     <description>Recent content in Codes on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Jul 2015 13:46:42 -0500</lastBuildDate>
-    <atom:link href="http://benbailey.me/code/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://benbailey.me/code/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>cumulus</title>
-      <link>http://benbailey.me/cumulus/</link>
+      <link>https://benbailey.me/cumulus/</link>
       <pubDate>Wed, 15 Jul 2015 13:46:42 -0500</pubDate>
       
-      <guid>http://benbailey.me/cumulus/</guid>
+      <guid>https://benbailey.me/cumulus/</guid>
       <description>
 
 &lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:a660cc648d60c08d08e9b34493bd91e7&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
@@ -49,10 +49,10 @@ go install github.com/benfb/cumulus
     
     <item>
       <title>elixush</title>
-      <link>http://benbailey.me/elixush/</link>
+      <link>https://benbailey.me/elixush/</link>
       <pubDate>Wed, 15 Jul 2015 13:46:42 -0500</pubDate>
       
-      <guid>http://benbailey.me/elixush/</guid>
+      <guid>https://benbailey.me/elixush/</guid>
       <description>
 
 &lt;h4 id=&#34;elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Elixush is an Elixir-based interpreter for the &lt;a href=&#34;http://pushlanguage.org&#34;&gt;Push genetic programming language&lt;/a&gt;.&lt;/h4&gt;
@@ -131,10 +131,10 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
     
     <item>
       <title>trackseeker</title>
-      <link>http://benbailey.me/trackseeker/</link>
+      <link>https://benbailey.me/trackseeker/</link>
       <pubDate>Mon, 29 Jun 2015 00:06:56 -0500</pubDate>
       
-      <guid>http://benbailey.me/trackseeker/</guid>
+      <guid>https://benbailey.me/trackseeker/</guid>
       <description>
 
 &lt;h3 id=&#34;welcome-to-trackseeker:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Welcome to Trackseeker.&lt;/h3&gt;
@@ -173,10 +173,10 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
     
     <item>
       <title>go-tumblr</title>
-      <link>http://benbailey.me/go-tumblr/</link>
+      <link>https://benbailey.me/go-tumblr/</link>
       <pubDate>Sun, 28 Jun 2015 22:19:00 -0500</pubDate>
       
-      <guid>http://benbailey.me/go-tumblr/</guid>
+      <guid>https://benbailey.me/go-tumblr/</guid>
       <description>&lt;p&gt;A work-in-progress client for the Tumblr API written in Go.&lt;/p&gt;
 </description>
     </item>
