@@ -2,12 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://benbailey.me/</loc>
-    <lastmod>2015-07-15T13:46:42-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://benbailey.me/cumulus/</loc>
     <lastmod>2015-07-15T13:46:42-05:00</lastmod>
   </url>
@@ -15,6 +9,11 @@
   <url>
     <loc>https://benbailey.me/elixush/</loc>
     <lastmod>2015-07-15T13:46:42-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://benbailey.me/2015/07/optimizing-dockerized-rails/</loc>
+    <lastmod>2015-07-11T13:42:43-05:00</lastmod>
   </url>
   
   <url>
@@ -30,11 +29,6 @@
   <url>
     <loc>https://benbailey.me/go-tumblr/</loc>
     <lastmod>2015-06-28T22:19:00-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://benbailey.me/about/</loc>
-    <lastmod>2015-06-28T18:54:14-05:00</lastmod>
   </url>
   
   <url>
@@ -55,6 +49,24 @@
   <url>
     <loc>https://benbailey.me/2011/08/game-making/</loc>
     <lastmod>2011-08-04T21:19:51-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://benbailey.me/code/</loc>
+    <lastmod>2015-07-15T13:46:42-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://benbailey.me/post/</loc>
+    <lastmod>2015-07-11T13:42:43-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://benbailey.me/</loc>
+    <lastmod>2015-07-15T13:46:42-05:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

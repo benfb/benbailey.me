@@ -3,12 +3,14 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.19" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> benfb &middot; benfb </title>
+  
+  <title>benfb</title>
+  
 
   
   <link rel="stylesheet" href="https://benbailey.me/css/poole.css">
@@ -26,22 +28,20 @@
   <link href="https://benbailey.me/index.xml" rel="alternate" type="application/rss+xml" title="benfb" />
 </head>
 
-<body class="theme-base-08">
+<body class="theme-base-08 ">
 
   <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
       <p class="lead">
-       A curious, empathetic student looking forward to the world. 
+       Student and devops in Amherst and Austin. 
       </p>
     </div>
 
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
-      
-        <li><a href="/about/"> About </a></li>
-      
+      <li><a href="//about.benbailey.me"> About </a></li>
       <br>
       
         <li>Code:</li>
@@ -61,7 +61,7 @@
     <a href="https://twitter.com/bennett"><i class="fa fa-twitter-square"></i></a>&nbsp;&nbsp;
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
 
-    <p>&copy; 2016. All rights reserved. </p>
+    <p>&copy; 2017. All rights reserved. </p>
   </div>
 </div>
 
@@ -77,6 +77,31 @@
         
           <div class="post">
             <h1 class="post-title">
+              <a href="https://benbailey.me/2015/07/optimizing-dockerized-rails/">
+                Optimizing Dockerized Rails
+              </a>
+            </h1>
+
+            <span class="post-date">Sat, Jul 11, 2015</span>
+
+            <p>Rails isn&rsquo;t exactly known for its speed or small size. This translates to Docker as well. The default Go Docker image is 200MB smaller than the default Ruby image, and 300MB smaller than the default Rails image. Since <a href="https://uncommon.cc">Uncommon</a> uses Rails and has lots of assets, the total image size for the app container alone came in at 1.39 GB, and when you add in Postgres (233 MB) and Redis (111 MB), you end up with a nearly 1.75 GB set of Docker images that you need to download over the internet.</p>
+
+<p>First, I visited the <a href="https://registry.hub.docker.com/_/ruby/">ruby</a> repository on Docker Hub. Examining the supported tags, I found that Docker provides slim versions of each ruby build which &ldquo;only contains the minimal packages needed to run <code>ruby</code>.&rdquo; Of course Uncommon relies on Rails, so I ended up needing to install quite a few extra packages that were installed in the standard <code>ruby</code> image. After it was all said and done, the image based on <code>ruby-slim</code> came in at 1.18 GB. I then added the <code>.git</code> directory to the repository&rsquo;s <code>.dockerignore</code> file, which brought the size down to 1.16 GB, for a total of nearly 250 MB off the original image.</p>
+
+<p>Next was Postgres. I came across Alpine Linux while browsing Docker repositories on Github. Alpine Linux is based off of <a href="http://www.busybox.net/">BusyBox</a>, but adds a package manager and other optimizations to make the operating system more usable. GliderLabs has built a Docker repository based off of Alpine <a href="https://github.com/gliderlabs/docker-alpine">here</a>. Intrigued by the purpoted 10x decrease in size, I decided to try to convert the default Debian-based postgres repository to an Alpine-based one. After some small script changes, the end result came out to 29 MB as opposed to the original 233 MB. I did the same with Redis, which came out to a mere 13 MB compared to the default 111 MB.</p>
+
+<p>It&rsquo;s fairly easy to switch your Docker images to Alpine when there&rsquo;s a package for what you want to install in the <a href="http://pkgs.alpinelinux.org/packages">Alpine repositories</a>. I ran into trouble trying to convert my Telegraf image, however, as no Alpine package currently exists. While I probably could have made my own package for it, I decided to take the easy way out and switch from an Ubuntu base to a Debian base. This brought the image down from 237 MB to 167 MB, which isn&rsquo;t bad for one line of Dockerfile changes.</p>
+
+<p>Finally, I moved the Uncommon app itself over to Alpine. After a few hours of trial and error, I found the right combinations of <code>apk</code> packages for the app to run successfully. The final size of that image is around 880 MB.</p>
+
+<p>All together, these optimizations bring the Uncommon Docker stack down from 1.75 GB to 920 MB, only 53% of its original size.</p>
+
+          </div>
+        
+      
+        
+          <div class="post">
+            <h1 class="post-title">
               <a href="https://benbailey.me/2015/06/docker-telegraf-metrics/">
                 Docker Metrics with Telegraf
               </a>
@@ -86,11 +111,11 @@
 
             <p>With the <a href="https://influxdb.com/blog/2015/06/11/InfluxDB-v0_9_0-released-with-developer-and-production-support.html">release of InfluxDB v0.9</a>, I was eager to start using Google&rsquo;s <a href="https://github.com/google/cadvisor">cAdvisor</a> to begin collecting metrics from Docker containers. Unfortunately, the new InfluxDB version comes with a new breaking API that cAdvisor still isn&rsquo;t compatible with. Not only does cAdvisor not support the new API, it&rsquo;s currently impossible to successfully run <code>go get github.com/google/cadvisor</code> because of this issue. After struggling with cAdvisor for a month, I learned that InfluxDB <a href="https://influxdb.com/blog/2015/06/19/Announcing-Telegraf-a-metrics-collector-for-InfluxDB.html">recently rolled out</a> their own metrics collector, <a href="https://github.com/influxdb/telegraf">Telegraf</a>, which is pretty much guaranteed to have the best InfluxDB integration possible.</p>
 
-<p>The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.<sup class="footnote-ref" id="fnref:36b3bb62bd22090f4d554b16a9e1bc44:1"><a rel="footnote" href="#fn:36b3bb62bd22090f4d554b16a9e1bc44:1">1</a></sup> In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to <code>localhost</code>.</p>
+<p>The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to <code>localhost</code>.</p>
 
 <p>Thus, the docker command to start up an InfluxDB cluster look something like this:</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">PRE_CREATE_DB</span>=<span style="color: #aa5500">&quot;telegraf&quot;</span> -e <span style="color: #aa0000">REPLI_FACTOR</span>=<span style="color: #aa5500">&quot;3&quot;</span> --volume=/influxdb:/data --publish=<span style="color: #009999">8083</span> --publish=<span style="color: #009999">8086</span> --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">PRE_CREATE_DB</span>=<span style="color: #aa5500">&quot;telegraf&quot;</span> -e <span style="color: #aa0000">REPLI_FACTOR</span>=<span style="color: #aa5500">&quot;3&quot;</span> --volume=/influxdb:/data --publish=<span style="color: #009999">8083</span> --publish=<span style="color: #009999">8086</span> --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
 
 docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">SEEDS</span>=<span style="color: #aa5500">&quot;master:8090&quot;</span> --volume=/influxdb:/data --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
 
@@ -100,7 +125,7 @@ docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span s
 
 <p>Currently Telegraf only supports Vagrant officially. I made a Docker repository at <code>bb/telegraf</code> that will suffice for now. You can start it up with</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">docker run -d bbailey/telegraf
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>docker run -d bbailey/telegraf
 </pre></div>
 
 
@@ -108,11 +133,11 @@ docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span s
 
 <p>After running these containers, you should start to see data appearing in InfluxDB. All that&rsquo;s left is to access it. Luckily, it&rsquo;s very simple to get important data from the InfluxDB API using the <a href="https://godoc.org/github.com/influxdb/influxdb/client">native Go client</a>:</p>
 
-<p><div class="highlight" style="background: #ffffff"><pre style="line-height: 125%">q := <span style="color: #aa5500">&quot;SELECT percentile(value, 95) FROM docker_system WHERE name=&#39;telegraf&#39; ORDER BY asc&quot;</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>q := <span style="color: #aa5500">&quot;SELECT percentile(value, 95) FROM docker_system WHERE name=&#39;telegraf&#39; ORDER BY asc&quot;</span>
 res, _ := queryDB(con, q)
 fmt.Println(res[<span style="color: #009999">0</span>].Series[<span style="color: #009999">0</span>].Values[<span style="color: #009999">0</span>][<span style="color: #009999">1</span>])
 </pre></div>
-</p>
+
 
 <p>This gets you the 90th percentile of the CPU usage of the docker container named &ldquo;telegraf.&rdquo;</p>
 
@@ -122,14 +147,12 @@ fmt.Println(res[<span style="color: #009999">0</span>].Series[<span style="color
 <hr />
 
 <ol>
-<li id="fn:36b3bb62bd22090f4d554b16a9e1bc44:1">InfluxDB allows for a maximum of three brokers in the current version, but that still allows for one failure which should be plenty
- <a class="footnote-return" href="#fnref:36b3bb62bd22090f4d554b16a9e1bc44:1"><sup>[return]</sup></a></li>
+<li id="fn:1">InfluxDB allows for a maximum of three brokers in the current version, but that still allows for one failure which should be plenty
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
 </ol>
 </div>
 
           </div>
-        
-      
         
       
         
@@ -170,14 +193,14 @@ fmt.Println(res[<span style="color: #009999">0</span>].Series[<span style="color
 </ol>
 
 <p>Below is the finalized sshd_config file:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
 <span style="color: #aaaaaa; font-style: italic"># See the sshd_config(5) manpage for details</span>
 
 <span style="color: #aaaaaa; font-style: italic"># What ports, IPs and protocols we listen for</span>
-Port 22
-Port 443
+Port <span style="color: #009999">22</span>
+Port <span style="color: #009999">443</span>
 
-Protocol 1,2
+Protocol <span style="color: #009999">1</span>,2
 
 HostKey /etc/ssh/ssh_host_key
 
@@ -189,15 +212,15 @@ HostKey /etc/ssh/ssh_host_ecdsa_key
 UsePrivilegeSeparation yes
 
 <span style="color: #aaaaaa; font-style: italic"># Lifetime and size of ephemeral version 1 server key</span>
-KeyRegenerationInterval 3600
-ServerKeyBits 768
+KeyRegenerationInterval <span style="color: #009999">3600</span>
+ServerKeyBits <span style="color: #009999">768</span>
 
 <span style="color: #aaaaaa; font-style: italic"># Logging</span>
 SyslogFacility AUTH
 LogLevel INFO
 
 <span style="color: #aaaaaa; font-style: italic"># Authentication:</span>
-LoginGraceTime 120
+LoginGraceTime <span style="color: #009999">120</span>
 PermitRootLogin yes
 StrictModes yes
 
@@ -227,7 +250,7 @@ ChallengeResponseAuthentication no
 PasswordAuthentication yes
 
 X11Forwarding yes
-X11DisplayOffset 10
+X11DisplayOffset <span style="color: #009999">10</span>
 PrintMotd no
 PrintLastLog yes
 TCPKeepAlive yes
@@ -244,7 +267,7 @@ UsePAM yes
 
 <p>Here&rsquo;s how to use that server as a tunnel for web traffic.</p>
 
-<h2 id="on-osx:139ebcb8a03645e5033ee060de694768">On OSX</h2>
+<h2 id="on-osx">On OSX</h2>
 
 <ol>
 <li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
@@ -255,14 +278,14 @@ UsePAM yes
 <li>(You may need to tell your browser to use system proxy settings).</li>
 </ol>
 
-<h2 id="on-linux:139ebcb8a03645e5033ee060de694768">On Linux</h2>
+<h2 id="on-linux">On Linux</h2>
 
 <ol>
 <li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
 <li>Configure your browser to use a SOCKS5 proxy on <code>localhost:8080</code>.</li>
 </ol>
 
-<h2 id="on-windows:139ebcb8a03645e5033ee060de694768">On Windows</h2>
+<h2 id="on-windows">On Windows</h2>
 
 <ol>
 <li>Download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>.</li>

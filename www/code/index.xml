@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Codes on benfb</title>
-    <link>https://benbailey.me/code/</link>
+    <link>https://benbailey.me/code/index.xml</link>
     <description>Recent content in Codes on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -17,17 +17,17 @@
       <guid>https://benbailey.me/cumulus/</guid>
       <description>
 
-&lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates:a660cc648d60c08d08e9b34493bd91e7&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
+&lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;go get github.com/benfb/cumulus
 go install github.com/benfb/cumulus
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;why:a660cc648d60c08d08e9b34493bd91e7&#34;&gt;Why?&lt;/h3&gt;
+&lt;h3 id=&#34;why&#34;&gt;Why?&lt;/h3&gt;
 
 &lt;p&gt;CoreOS is a great operating system for running Docker contianers, and it can be configured easily using &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;. However, if you want to use Amazon&amp;rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.&lt;/p&gt;
 
-&lt;h3 id=&#34;example:a660cc648d60c08d08e9b34493bd91e7&#34;&gt;Example&lt;/h3&gt;
+&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
 
 &lt;p&gt;This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.&lt;/p&gt;
 
@@ -55,9 +55,9 @@ go install github.com/benfb/cumulus
       <guid>https://benbailey.me/elixush/</guid>
       <description>
 
-&lt;h4 id=&#34;elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Elixush is an Elixir-based interpreter for the &lt;a href=&#34;http://pushlanguage.org&#34;&gt;Push genetic programming language&lt;/a&gt;.&lt;/h4&gt;
+&lt;h4 id=&#34;elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org&#34;&gt;Elixush is an Elixir-based interpreter for the &lt;a href=&#34;http://pushlanguage.org&#34;&gt;Push genetic programming language&lt;/a&gt;.&lt;/h4&gt;
 
-&lt;h3 id=&#34;reasoning:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Reasoning&lt;/h3&gt;
+&lt;h3 id=&#34;reasoning&#34;&gt;Reasoning&lt;/h3&gt;
 
 &lt;p&gt;Elixir runs every function in its own process on the virtual machine. The Elixir
 virtual machine has a much faster startup time than the JVM. The well-established
@@ -70,7 +70,7 @@ The project also attempts to widen Push&amp;rsquo;s audience, as it opens up Pus
 community. Theoretically, Elixush &lt;em&gt;should&lt;/em&gt; run better on clusters than Clojush, but
 some testing is still necessary.&lt;/p&gt;
 
-&lt;h3 id=&#34;getting-started:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Getting Started&lt;/h3&gt;
+&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
 
 &lt;p&gt;To run Elixush, you&amp;rsquo;ll need to install Elixir. The official instructions for how
 to do so can be found &lt;a href=&#34;http://elixir-lang.org/install.html&#34;&gt;here&lt;/a&gt;. If you have a
@@ -99,7 +99,7 @@ this case the following map:&lt;/p&gt;
 the server process in the background, following Elixir&amp;rsquo;s let-it-crash mentality.
 The REPL process can be exited by pressing &lt;code&gt;CTRL-C&lt;/code&gt; twice.&lt;/p&gt;
 
-&lt;h3 id=&#34;running:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Running&lt;/h3&gt;
+&lt;h3 id=&#34;running&#34;&gt;Running&lt;/h3&gt;
 
 &lt;p&gt;For now, the best way to run Push programs is IEx:&lt;/p&gt;
 
@@ -116,7 +116,7 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
   vector_integer: [], vector_string: [], zip: []}
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;roadmap:79b3346ee6d60c2f6cd00b018ebc141b&#34;&gt;Roadmap&lt;/h3&gt;
+&lt;h3 id=&#34;roadmap&#34;&gt;Roadmap&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Clean up codebase&lt;/li&gt;
@@ -137,19 +137,19 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
       <guid>https://benbailey.me/trackseeker/</guid>
       <description>
 
-&lt;h3 id=&#34;welcome-to-trackseeker:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Welcome to Trackseeker.&lt;/h3&gt;
+&lt;h3 id=&#34;welcome-to-trackseeker&#34;&gt;Welcome to Trackseeker.&lt;/h3&gt;
 
 &lt;p&gt;Trackseeker is a tool that uses the Dead Air Removal Service to discover hidden tracks and add them to iTunes.&lt;/p&gt;
 
 &lt;p&gt;Often hidden tracks that are ripped from CDs leave the user with a massive file that has the short ending track followed by several minutes of silence and then a short hidden track. Trackseeker removes the silence from these tracks and splits them into two separate files.&lt;/p&gt;
 
-&lt;h3 id=&#34;getting-started:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Getting Started&lt;/h3&gt;
+&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
 
 &lt;p&gt;Ffmpeg is required to be able to use Trackseeker. To learn how to install it on your platform, refer to pydub&amp;rsquo;s documentation &lt;a href=&#34;https://github.com/jiaaro/pydub/#getting-ffmpeg-set-up&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To install Trackseeker, just type &lt;code&gt;pip install trackseeker&lt;/code&gt; and pip will install Trackseeker and the two libraries it relies on, dars and pydub.&lt;/p&gt;
 
-&lt;h3 id=&#34;example:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Example&lt;/h3&gt;
+&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
 
 &lt;p&gt;I want to extract the hidden track from Beach House&amp;rsquo;s &amp;ldquo;Irene.&amp;rdquo; The song is currently 16 minutes long, with about seven minutes of silence between the album closer and the hidden track. I run the command:&lt;/p&gt;
 
@@ -159,7 +159,7 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
 
 &lt;p&gt;You can also run &lt;code&gt;trackseeker&lt;/code&gt; with no arguments to have the program ask for the required information line by line, or view all available arguments with &lt;code&gt;trackseeker -h&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;notes:61f5fe94dd6908ebdf38e66b9c722bcd&#34;&gt;Notes&lt;/h3&gt;
+&lt;h3 id=&#34;notes&#34;&gt;Notes&lt;/h3&gt;
 
 &lt;p&gt;Trackseeker occasionally runs into issues when exporting MP3s. This appears to be a problem with MP3 headers. If anyone knows of a fix for this, please create an issue in the Github project.&lt;/p&gt;
 

@@ -3,12 +3,14 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.19" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> elixush &middot; benfb </title>
+  
+  <title>elixush &middot; benfb</title>
+  
 
   
   <link rel="stylesheet" href="https://benbailey.me/css/poole.css">
@@ -32,15 +34,13 @@
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
       <p class="lead">
-       A curious, empathetic student looking forward to the world. 
+       Student and devops in Amherst and Austin. 
       </p>
     </div>
 
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
-      
-        <li><a href="/about/"> About </a></li>
-      
+      <li><a href="//about.benbailey.me"> About </a></li>
       <br>
       
         <li>Code:</li>
@@ -60,7 +60,7 @@
     <a href="https://twitter.com/bennett"><i class="fa fa-twitter-square"></i></a>&nbsp;&nbsp;
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
 
-    <p>&copy; 2016. All rights reserved. </p>
+    <p>&copy; 2017. All rights reserved. </p>
   </div>
 </div>
 
@@ -72,9 +72,9 @@
         </h1>
         
 
-<h4 id="elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org:79b3346ee6d60c2f6cd00b018ebc141b">Elixush is an Elixir-based interpreter for the <a href="http://pushlanguage.org">Push genetic programming language</a>.</h4>
+<h4 id="elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org">Elixush is an Elixir-based interpreter for the <a href="http://pushlanguage.org">Push genetic programming language</a>.</h4>
 
-<h3 id="reasoning:79b3346ee6d60c2f6cd00b018ebc141b">Reasoning</h3>
+<h3 id="reasoning">Reasoning</h3>
 
 <p>Elixir runs every function in its own process on the virtual machine. The Elixir
 virtual machine has a much faster startup time than the JVM. The well-established
@@ -87,7 +87,7 @@ The project also attempts to widen Push&rsquo;s audience, as it opens up Push to
 community. Theoretically, Elixush <em>should</em> run better on clusters than Clojush, but
 some testing is still necessary.</p>
 
-<h3 id="getting-started:79b3346ee6d60c2f6cd00b018ebc141b">Getting Started</h3>
+<h3 id="getting-started">Getting Started</h3>
 
 <p>To run Elixush, you&rsquo;ll need to install Elixir. The official instructions for how
 to do so can be found <a href="http://elixir-lang.org/install.html">here</a>. If you have a
@@ -116,7 +116,7 @@ this case the following map:</p>
 the server process in the background, following Elixir&rsquo;s let-it-crash mentality.
 The REPL process can be exited by pressing <code>CTRL-C</code> twice.</p>
 
-<h3 id="running:79b3346ee6d60c2f6cd00b018ebc141b">Running</h3>
+<h3 id="running">Running</h3>
 
 <p>For now, the best way to run Push programs is IEx:</p>
 
@@ -133,7 +133,7 @@ iex(1)&gt; Elixush.Server.run_program [1, 2, :integer_sub]
   vector_integer: [], vector_string: [], zip: []}
 </code></pre>
 
-<h3 id="roadmap:79b3346ee6d60c2f6cd00b018ebc141b">Roadmap</h3>
+<h3 id="roadmap">Roadmap</h3>
 
 <ul>
 <li>Clean up codebase</li>

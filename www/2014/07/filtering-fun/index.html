@@ -3,12 +3,14 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.15" />
+  <meta name="generator" content="Hugo 0.19" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title> Filtering Fun &middot; benfb </title>
+  
+  <title>Filtering Fun &middot; benfb</title>
+  
 
   
   <link rel="stylesheet" href="https://benbailey.me/css/poole.css">
@@ -26,21 +28,19 @@
   <link href="" rel="alternate" type="application/rss+xml" title="benfb" />
 </head>
 
-	<body class="theme-base-08">
+	<body class="theme-base-08 ">
 		<div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
       <p class="lead">
-       A curious, empathetic student looking forward to the world. 
+       Student and devops in Amherst and Austin. 
       </p>
     </div>
 
     <ul class="sidebar-nav">
       <li><a href="/">Home</a> </li>
-      
-        <li><a href="/about/"> About </a></li>
-      
+      <li><a href="//about.benbailey.me"> About </a></li>
       <br>
       
         <li>Code:</li>
@@ -60,7 +60,7 @@
     <a href="https://twitter.com/bennett"><i class="fa fa-twitter-square"></i></a>&nbsp;&nbsp;
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
 
-    <p>&copy; 2016. All rights reserved. </p>
+    <p>&copy; 2017. All rights reserved. </p>
   </div>
 </div>
 
@@ -95,14 +95,14 @@
 </ol>
 
 <p>Below is the finalized sshd_config file:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
+<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
 <span style="color: #aaaaaa; font-style: italic"># See the sshd_config(5) manpage for details</span>
 
 <span style="color: #aaaaaa; font-style: italic"># What ports, IPs and protocols we listen for</span>
-Port 22
-Port 443
+Port <span style="color: #009999">22</span>
+Port <span style="color: #009999">443</span>
 
-Protocol 1,2
+Protocol <span style="color: #009999">1</span>,2
 
 HostKey /etc/ssh/ssh_host_key
 
@@ -114,15 +114,15 @@ HostKey /etc/ssh/ssh_host_ecdsa_key
 UsePrivilegeSeparation yes
 
 <span style="color: #aaaaaa; font-style: italic"># Lifetime and size of ephemeral version 1 server key</span>
-KeyRegenerationInterval 3600
-ServerKeyBits 768
+KeyRegenerationInterval <span style="color: #009999">3600</span>
+ServerKeyBits <span style="color: #009999">768</span>
 
 <span style="color: #aaaaaa; font-style: italic"># Logging</span>
 SyslogFacility AUTH
 LogLevel INFO
 
 <span style="color: #aaaaaa; font-style: italic"># Authentication:</span>
-LoginGraceTime 120
+LoginGraceTime <span style="color: #009999">120</span>
 PermitRootLogin yes
 StrictModes yes
 
@@ -152,7 +152,7 @@ ChallengeResponseAuthentication no
 PasswordAuthentication yes
 
 X11Forwarding yes
-X11DisplayOffset 10
+X11DisplayOffset <span style="color: #009999">10</span>
 PrintMotd no
 PrintLastLog yes
 TCPKeepAlive yes
@@ -169,7 +169,7 @@ UsePAM yes
 
 <p>Here&rsquo;s how to use that server as a tunnel for web traffic.</p>
 
-<h2 id="on-osx:139ebcb8a03645e5033ee060de694768">On OSX</h2>
+<h2 id="on-osx">On OSX</h2>
 
 <ol>
 <li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
@@ -180,14 +180,14 @@ UsePAM yes
 <li>(You may need to tell your browser to use system proxy settings).</li>
 </ol>
 
-<h2 id="on-linux:139ebcb8a03645e5033ee060de694768">On Linux</h2>
+<h2 id="on-linux">On Linux</h2>
 
 <ol>
 <li>Run the command <code>ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1</code>.</li>
 <li>Configure your browser to use a SOCKS5 proxy on <code>localhost:8080</code>.</li>
 </ol>
 
-<h2 id="on-windows:139ebcb8a03645e5033ee060de694768">On Windows</h2>
+<h2 id="on-windows">On Windows</h2>
 
 <ol>
 <li>Download <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>.</li>

@@ -1,6 +1,5 @@
 +++
 Description = ""
-Tags = ["Development", "golang"]
 date = "2015-06-29T00:06:56-05:00"
 menu = "code"
 title = "trackseeker"
