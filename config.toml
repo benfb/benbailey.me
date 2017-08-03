@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "benfb"
 theme = "hyde"
 pygmentsstyle = "autumn"
+pygmentscodefences = true
 publishdir = "www"
 
 [permalinks]
@@ -12,7 +13,6 @@ publishdir = "www"
 [params]
     themeColor = "theme-base-08"
     home = "Home"
-    highlight = "sunburst"
     rss = true
     description = "Student and devops in Amherst and Austin."
     email = "mailto:bennettbailey@gmail.com"
