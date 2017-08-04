@@ -6,10 +6,21 @@
     <description>Recent content in Posts on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 11 Jul 2015 13:42:43 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 03 Aug 2017 19:32:13 -0500</lastBuildDate>
     
 	<atom:link href="https://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Nomad Primer</title>
+      <link>https://benbailey.me/2017/08/a-nomad-primer/</link>
+      <pubDate>Thu, 03 Aug 2017 19:32:13 -0500</pubDate>
+      
+      <guid>https://benbailey.me/2017/08/a-nomad-primer/</guid>
+      <description>Over the past few months, I&amp;rsquo;ve had the opportunity to create a Nomad cluster and develop tooling around it.1 What follows is a short list of some Nomad CLI commands I&amp;rsquo;ve found useful in administrating a cluster. (The job name &amp;ldquo;nginx&amp;rdquo; is used as an example.)
+ nomad status nginx
+ Display basic information about a job. Helpfully displays allocation IDs and deployment status. When in doubt, run this command.</description>
+    </item>
     
     <item>
       <title>Optimizing Dockerized Rails</title>

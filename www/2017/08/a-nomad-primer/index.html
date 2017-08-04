@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   
-  <title>I wish I&#39;d written you a letter &middot; benfb</title>
+  <title>A Nomad Primer &middot; benfb</title>
   
 
   
@@ -68,37 +68,52 @@
 
 		<div class="content container">
 			<div class="post">
-			 	<h1>I wish I&#39;d written you a letter</h1>
+			 	<h1>A Nomad Primer</h1>
 				
-			  	<span class="post-date">Sun, Jul 20, 2014</span>
+			  	<span class="post-date">Thu, Aug 3, 2017</span>
 				
-			      <p>I spent the afternoon lost in Ned Vizzini’s <em>Teen Angst? Naah…</em>, a collection of short essays about his experiences as a teenager. It’s candid, thoughtful, and entertaining.</p>
-
-<p><span class="more"></p>
-
-<p>Ned Vizzini also wrote <em>It’s Kind Of A Funny Story</em>, a book based on his week-long stay in a mental hospital that changed his life. The book itself went on to change so many other lives.</p>
-
-<p>He killed himself last winter.</p>
-
-<p>I don’t know why.</p>
-
-<p>This book affected me more than most books I’ve read. I’m not sure why. The last chapter is a note from Ned about what happened to him after high school. He sounded like he was doing so well. He <em>was</em> doing so well. And now he’s gone.</p>
-
-<p>Maybe I feel this way because, in a strange way, he reminded me of me. He went to a magnet high school, was rather socially awkward, etc. But I feel like anyone could relate to his experiences. <em>Teen Angst?</em> makes Ned Vizzini feel like a real person. It reads as if he&rsquo;s hanging out in your dorm room and sharing stories about high school.</p>
-
-<p>I wish I could have got to know him. I feel like I missed out on an opportunity to make a new friend, even though I doubt I ever would have met him. He seems like a great person.</p>
-
-<p>I wish I knew why, but it doesn’t really matter. It happened, and now it’s over.</p>
-
-<p>I miss him. And I don’t know why, but I wish he were here.</p>
-
-<p>The book ends kind of like this:</p>
+			      <p>Over the past few months, I&rsquo;ve had the opportunity to create a <a href="https://www.nomadproject.io">Nomad</a> cluster and develop tooling around it.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> What follows is a short list of some Nomad CLI commands I&rsquo;ve found useful in administrating a cluster. (The job name &ldquo;nginx&rdquo; is used as an example.)</p>
 
 <blockquote>
-<p>I’m a writer from now on, for better or worse, and so far it’s  mostly all better…Do I have days where I wake up and no Muses are there and I don’t even want to deal with my life anymore? Sure…But above and beyond that are the days when the words come together and I sit back in my chair and go, “Man, this is fun.” And there are the days where I get an e-mail or a letter from someone who read my writing and liked it and I just slap myself in the head for an entirely different reason, because I’m blessed.</p>
+<p><code>nomad status nginx</code></p>
 </blockquote>
 
-<p>I wish I had written you a letter, Ned.</p>
+<p>Display basic information about a job. Helpfully displays allocation IDs and deployment status. When in doubt, run this command.</p>
+
+<blockquote>
+<p><code>nomad job history -p nginx</code></p>
+</blockquote>
+
+<p>Display the full version history of a job, including diffs between versions.</p>
+
+<blockquote>
+<p><code>nomad logs [-stderr] -job nginx</code></p>
+</blockquote>
+
+<p>Get logs from a random container running your job. Can optionally get logs from STDERR of the container instead. You can also run this command without the <code>-job</code> flag on an allocation ID to get the logs from one specific container.</p>
+
+<blockquote>
+<p><code>nomad alloc-status -stats &lt;alloc-id&gt;</code></p>
+</blockquote>
+
+<p>Get information about a specific allocation of a job. This is useful for debugging startup issues, as it presents a log of every event related to the allocation. The <code>-stats</code> flag shows CPU and memory usage, as well as any reserved ports.</p>
+
+<blockquote>
+<p><code>nomad node-status</code></p>
+</blockquote>
+
+<p>Get a list of currently running Nomad client nodes. This can help you link a Node ID hash to an actual IP address if you need to figure out which node an allocation is running on.</p>
+
+<p>Feel free to reach out to me with any more Nomad tips you find useful! These were just the ones I&rsquo;ve gotten the most out of.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">One of those tools, a container auto-scaler, will hopefully be open-sourced soon.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
 
 			</div>
 		</div>

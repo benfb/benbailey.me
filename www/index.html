@@ -3,7 +3,7 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.25" />
+  <meta name="generator" content="Hugo 0.25.1" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -73,6 +73,62 @@
   <div class="content container">
     <div class="posts">
 
+      
+        
+          <div class="post">
+            <h1 class="post-title">
+              <a href="https://benbailey.me/2017/08/a-nomad-primer/">
+                A Nomad Primer
+              </a>
+            </h1>
+
+            <span class="post-date">Thu, Aug 3, 2017</span>
+
+            <p>Over the past few months, I&rsquo;ve had the opportunity to create a <a href="https://www.nomadproject.io">Nomad</a> cluster and develop tooling around it.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> What follows is a short list of some Nomad CLI commands I&rsquo;ve found useful in administrating a cluster. (The job name &ldquo;nginx&rdquo; is used as an example.)</p>
+
+<blockquote>
+<p><code>nomad status nginx</code></p>
+</blockquote>
+
+<p>Display basic information about a job. Helpfully displays allocation IDs and deployment status. When in doubt, run this command.</p>
+
+<blockquote>
+<p><code>nomad job history -p nginx</code></p>
+</blockquote>
+
+<p>Display the full version history of a job, including diffs between versions.</p>
+
+<blockquote>
+<p><code>nomad logs [-stderr] -job nginx</code></p>
+</blockquote>
+
+<p>Get logs from a random container running your job. Can optionally get logs from STDERR of the container instead. You can also run this command without the <code>-job</code> flag on an allocation ID to get the logs from one specific container.</p>
+
+<blockquote>
+<p><code>nomad alloc-status -stats &lt;alloc-id&gt;</code></p>
+</blockquote>
+
+<p>Get information about a specific allocation of a job. This is useful for debugging startup issues, as it presents a log of every event related to the allocation. The <code>-stats</code> flag shows CPU and memory usage, as well as any reserved ports.</p>
+
+<blockquote>
+<p><code>nomad node-status</code></p>
+</blockquote>
+
+<p>Get a list of currently running Nomad client nodes. This can help you link a Node ID hash to an actual IP address if you need to figure out which node an allocation is running on.</p>
+
+<p>Feel free to reach out to me with any more Nomad tips you find useful! These were just the ones I&rsquo;ve gotten the most out of.</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">One of those tools, a container auto-scaler, will hopefully be open-sourced soon.
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+          </div>
+        
       
         
       
