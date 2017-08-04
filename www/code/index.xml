@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Codes on benfb</title>
-    <link>https://benbailey.me/code/index.xml</link>
+    <link>https://benbailey.me/code/</link>
     <description>Recent content in Codes on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 15 Jul 2015 13:46:42 -0500</lastBuildDate>
-    <atom:link href="https://benbailey.me/code/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://benbailey.me/code/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>cumulus</title>
@@ -15,36 +17,7 @@
       <pubDate>Wed, 15 Jul 2015 13:46:42 -0500</pubDate>
       
       <guid>https://benbailey.me/cumulus/</guid>
-      <description>
-
-&lt;h4 id=&#34;cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates&#34;&gt;Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;go get github.com/benfb/cumulus
-go install github.com/benfb/cumulus
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;why&#34;&gt;Why?&lt;/h3&gt;
-
-&lt;p&gt;CoreOS is a great operating system for running Docker contianers, and it can be configured easily using &lt;a href=&#34;https://coreos.com/os/docs/latest/cloud-config.html&#34;&gt;Cloud-Config&lt;/a&gt;. However, if you want to use Amazon&amp;rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.&lt;/p&gt;
-
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cumulus inject cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Alternatively, you can just format the cloud-config and write it to a file.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml --out cloud-formation.json&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Or you can output to STDOUT and pipe the output somewhere else.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cumulus format cloud-config.yaml | cat -n&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Finally, if you&amp;rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267&lt;/code&gt;&lt;/p&gt;
-</description>
+      <description>Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates go get github.com/benfb/cumulus go install github.com/benfb/cumulus  Why? CoreOS is a great operating system for running Docker contianers, and it can be configured easily using Cloud-Config. However, if you want to use Amazon&amp;rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.</description>
     </item>
     
     <item>
@@ -53,80 +26,7 @@ go install github.com/benfb/cumulus
       <pubDate>Wed, 15 Jul 2015 13:46:42 -0500</pubDate>
       
       <guid>https://benbailey.me/elixush/</guid>
-      <description>
-
-&lt;h4 id=&#34;elixush-is-an-elixir-based-interpreter-for-the-push-genetic-programming-language-http-pushlanguage-org&#34;&gt;Elixush is an Elixir-based interpreter for the &lt;a href=&#34;http://pushlanguage.org&#34;&gt;Push genetic programming language&lt;/a&gt;.&lt;/h4&gt;
-
-&lt;h3 id=&#34;reasoning&#34;&gt;Reasoning&lt;/h3&gt;
-
-&lt;p&gt;Elixir runs every function in its own process on the virtual machine. The Elixir
-virtual machine has a much faster startup time than the JVM. The well-established
-OTP architecture in place here makes concurrency and parallelism much easier to
-implement than in Clojush. By focusing only on the interpreter rather than actual
-genetic programming, Elixush is much easier to maintain. Elixir conventions are
-generally followed, making the code relatively easy to understand at a glance. The
-way the interpreter is structured makes it easy to add new instructions and types.
-The project also attempts to widen Push&amp;rsquo;s audience, as it opens up Push to the Elixir
-community. Theoretically, Elixush &lt;em&gt;should&lt;/em&gt; run better on clusters than Clojush, but
-some testing is still necessary.&lt;/p&gt;
-
-&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
-
-&lt;p&gt;To run Elixush, you&amp;rsquo;ll need to install Elixir. The official instructions for how
-to do so can be found &lt;a href=&#34;http://elixir-lang.org/install.html&#34;&gt;here&lt;/a&gt;. If you have a
-Mac, a simple &lt;code&gt;brew install elixir&lt;/code&gt; should suffice.&lt;/p&gt;
-
-&lt;p&gt;Installing the Elixir language also installs the Erlang virtual machine, as well
-as Elixir&amp;rsquo;s interactive shell (REPL), IEx. Once Elixir is installed, run &lt;code&gt;mix deps.get&lt;/code&gt;
-to install the requisite dependencies, then &lt;code&gt;mix deps.compile&lt;/code&gt; to compile them.
-You can then run &lt;code&gt;iex -S mix&lt;/code&gt; in the Elixush directory and it will start up a REPL
-with Elixush loaded in.&lt;/p&gt;
-
-&lt;p&gt;Elixush includes a &amp;ldquo;Server&amp;rdquo; that takes Push programs as lists of instructions.
-This server can be accessed by calling &lt;code&gt;Elixush.Server.run_program&lt;/code&gt; from the REPL,
-followed by a list of instructions, such as &lt;code&gt;Elixush.Server.run_program [1, 2, :integer_add]&lt;/code&gt;.
-This will print out the stack state at the end of the program&amp;rsquo;s execution, or in
-this case the following map:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
-  exec: [], float: [], genome: [], input: [], integer: [3],
-  output: [], return: [], string: [], tag: [],
-  termination: :normal, vector_boolean: [], vector_float: [],
-  vector_integer: [], vector_string: [], zip: []}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If the program crashes the server for some reason, a Supervisor will simply restart
-the server process in the background, following Elixir&amp;rsquo;s let-it-crash mentality.
-The REPL process can be exited by pressing &lt;code&gt;CTRL-C&lt;/code&gt; twice.&lt;/p&gt;
-
-&lt;h3 id=&#34;running&#34;&gt;Running&lt;/h3&gt;
-
-&lt;p&gt;For now, the best way to run Push programs is IEx:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ iex -S mix
-
-Compiled lib/elixush.ex
-
-iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
-
-%{auxiliary: [], boolean: [], char: [], code: [], environment: [],
-  exec: [], float: [], genome: [], input: [], integer: [-1],
-  output: [], return: [], string: [], tag: [],
-  termination: :normal, vector_boolean: [], vector_float: [],
-  vector_integer: [], vector_string: [], zip: []}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;roadmap&#34;&gt;Roadmap&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Clean up codebase&lt;/li&gt;
-&lt;li&gt;Finish porting over instructions from Clojush&lt;/li&gt;
-&lt;li&gt;Add tests!&lt;/li&gt;
-&lt;li&gt;Make a standalone executable?&lt;/li&gt;
-&lt;li&gt;Implement GP?&lt;/li&gt;
-&lt;li&gt;Implement Plush?&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Elixush is an Elixir-based interpreter for the Push genetic programming language. Reasoning Elixir runs every function in its own process on the virtual machine. The Elixir virtual machine has a much faster startup time than the JVM. The well-established OTP architecture in place here makes concurrency and parallelism much easier to implement than in Clojush. By focusing only on the interpreter rather than actual genetic programming, Elixush is much easier to maintain.</description>
     </item>
     
     <item>
@@ -135,40 +35,8 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
       <pubDate>Mon, 29 Jun 2015 00:06:56 -0500</pubDate>
       
       <guid>https://benbailey.me/trackseeker/</guid>
-      <description>
-
-&lt;h3 id=&#34;welcome-to-trackseeker&#34;&gt;Welcome to Trackseeker.&lt;/h3&gt;
-
-&lt;p&gt;Trackseeker is a tool that uses the Dead Air Removal Service to discover hidden tracks and add them to iTunes.&lt;/p&gt;
-
-&lt;p&gt;Often hidden tracks that are ripped from CDs leave the user with a massive file that has the short ending track followed by several minutes of silence and then a short hidden track. Trackseeker removes the silence from these tracks and splits them into two separate files.&lt;/p&gt;
-
-&lt;h3 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h3&gt;
-
-&lt;p&gt;Ffmpeg is required to be able to use Trackseeker. To learn how to install it on your platform, refer to pydub&amp;rsquo;s documentation &lt;a href=&#34;https://github.com/jiaaro/pydub/#getting-ffmpeg-set-up&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;To install Trackseeker, just type &lt;code&gt;pip install trackseeker&lt;/code&gt; and pip will install Trackseeker and the two libraries it relies on, dars and pydub.&lt;/p&gt;
-
-&lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;I want to extract the hidden track from Beach House&amp;rsquo;s &amp;ldquo;Irene.&amp;rdquo; The song is currently 16 minutes long, with about seven minutes of silence between the album closer and the hidden track. I run the command:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;trackseeker --artist=&amp;quot;Beach House&amp;quot; --album=&amp;quot;Bloom&amp;quot; --track=&amp;quot;Irene&amp;quot; --num=&amp;quot;10&amp;quot; --fmt=&amp;quot;m4a&amp;quot;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;After a few minutes, two new songs are added to my iTunes library, the shortened version of &amp;ldquo;Irene&amp;rdquo; and the hidden track titled &amp;ldquo;(Hidden Track)&amp;rdquo;. In this case, Trackseeker removed seven minutes of silence and saved 14 MB of space. Not bad!&lt;/p&gt;
-
-&lt;p&gt;You can also run &lt;code&gt;trackseeker&lt;/code&gt; with no arguments to have the program ask for the required information line by line, or view all available arguments with &lt;code&gt;trackseeker -h&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&#34;notes&#34;&gt;Notes&lt;/h3&gt;
-
-&lt;p&gt;Trackseeker occasionally runs into issues when exporting MP3s. This appears to be a problem with MP3 headers. If anyone knows of a fix for this, please create an issue in the Github project.&lt;/p&gt;
-
-&lt;p&gt;Currently Trackseeker only works with iTunes. If you wish to use the silence detection and removal functions, you can use DARS (the Dead Air Removal Service) instead. It isn&amp;rsquo;t as nice to use, but functions well.&lt;/p&gt;
-
-&lt;p&gt;Trackseeker can take a few minutes to run. Get a cup of coffee, make a pros and cons list about getting a cup of coffee, ask someone else if you should get a cup of coffee, grab one anyway, whatever you want.&lt;/p&gt;
-
-&lt;p&gt;Deleting the original file is left as an exercise for the reader.&lt;/p&gt;
-</description>
+      <description>Welcome to Trackseeker. Trackseeker is a tool that uses the Dead Air Removal Service to discover hidden tracks and add them to iTunes.
+Often hidden tracks that are ripped from CDs leave the user with a massive file that has the short ending track followed by several minutes of silence and then a short hidden track. Trackseeker removes the silence from these tracks and splits them into two separate files.</description>
     </item>
     
     <item>
@@ -177,8 +45,7 @@ iex(1)&amp;gt; Elixush.Server.run_program [1, 2, :integer_sub]
       <pubDate>Sun, 28 Jun 2015 22:19:00 -0500</pubDate>
       
       <guid>https://benbailey.me/go-tumblr/</guid>
-      <description>&lt;p&gt;A work-in-progress client for the Tumblr API written in Go.&lt;/p&gt;
-</description>
+      <description>A work-in-progress client for the Tumblr API written in Go.</description>
     </item>
     
   </channel>

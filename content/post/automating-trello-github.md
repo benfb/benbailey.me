@@ -1,6 +1,7 @@
 +++
 date = "2017-03-14T14:22:30-05:00"
 title = "Automating Workflow with Trello and Github"
+draft = true
 +++
 
 Over winter break I had the chance to help [Pingboard][pb] improve their

@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on benfb</title>
-    <link>https://benbailey.me/post/index.xml</link>
+    <link>https://benbailey.me/post/</link>
     <description>Recent content in Posts on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Jul 2015 13:42:43 -0500</lastBuildDate>
-    <atom:link href="https://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Optimizing Dockerized Rails</title>
@@ -15,18 +17,7 @@
       <pubDate>Sat, 11 Jul 2015 13:42:43 -0500</pubDate>
       
       <guid>https://benbailey.me/2015/07/optimizing-dockerized-rails/</guid>
-      <description>&lt;p&gt;Rails isn&amp;rsquo;t exactly known for its speed or small size. This translates to Docker as well. The default Go Docker image is 200MB smaller than the default Ruby image, and 300MB smaller than the default Rails image. Since &lt;a href=&#34;https://uncommon.cc&#34;&gt;Uncommon&lt;/a&gt; uses Rails and has lots of assets, the total image size for the app container alone came in at 1.39 GB, and when you add in Postgres (233 MB) and Redis (111 MB), you end up with a nearly 1.75 GB set of Docker images that you need to download over the internet.&lt;/p&gt;
-
-&lt;p&gt;First, I visited the &lt;a href=&#34;https://registry.hub.docker.com/_/ruby/&#34;&gt;ruby&lt;/a&gt; repository on Docker Hub. Examining the supported tags, I found that Docker provides slim versions of each ruby build which &amp;ldquo;only contains the minimal packages needed to run &lt;code&gt;ruby&lt;/code&gt;.&amp;rdquo; Of course Uncommon relies on Rails, so I ended up needing to install quite a few extra packages that were installed in the standard &lt;code&gt;ruby&lt;/code&gt; image. After it was all said and done, the image based on &lt;code&gt;ruby-slim&lt;/code&gt; came in at 1.18 GB. I then added the &lt;code&gt;.git&lt;/code&gt; directory to the repository&amp;rsquo;s &lt;code&gt;.dockerignore&lt;/code&gt; file, which brought the size down to 1.16 GB, for a total of nearly 250 MB off the original image.&lt;/p&gt;
-
-&lt;p&gt;Next was Postgres. I came across Alpine Linux while browsing Docker repositories on Github. Alpine Linux is based off of &lt;a href=&#34;http://www.busybox.net/&#34;&gt;BusyBox&lt;/a&gt;, but adds a package manager and other optimizations to make the operating system more usable. GliderLabs has built a Docker repository based off of Alpine &lt;a href=&#34;https://github.com/gliderlabs/docker-alpine&#34;&gt;here&lt;/a&gt;. Intrigued by the purpoted 10x decrease in size, I decided to try to convert the default Debian-based postgres repository to an Alpine-based one. After some small script changes, the end result came out to 29 MB as opposed to the original 233 MB. I did the same with Redis, which came out to a mere 13 MB compared to the default 111 MB.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s fairly easy to switch your Docker images to Alpine when there&amp;rsquo;s a package for what you want to install in the &lt;a href=&#34;http://pkgs.alpinelinux.org/packages&#34;&gt;Alpine repositories&lt;/a&gt;. I ran into trouble trying to convert my Telegraf image, however, as no Alpine package currently exists. While I probably could have made my own package for it, I decided to take the easy way out and switch from an Ubuntu base to a Debian base. This brought the image down from 237 MB to 167 MB, which isn&amp;rsquo;t bad for one line of Dockerfile changes.&lt;/p&gt;
-
-&lt;p&gt;Finally, I moved the Uncommon app itself over to Alpine. After a few hours of trial and error, I found the right combinations of &lt;code&gt;apk&lt;/code&gt; packages for the app to run successfully. The final size of that image is around 880 MB.&lt;/p&gt;
-
-&lt;p&gt;All together, these optimizations bring the Uncommon Docker stack down from 1.75 GB to 920 MB, only 53% of its original size.&lt;/p&gt;
-</description>
+      <description>Rails isn&amp;rsquo;t exactly known for its speed or small size. This translates to Docker as well. The default Go Docker image is 200MB smaller than the default Ruby image, and 300MB smaller than the default Rails image. Since Uncommon uses Rails and has lots of assets, the total image size for the app container alone came in at 1.39 GB, and when you add in Postgres (233 MB) and Redis (111 MB), you end up with a nearly 1.</description>
     </item>
     
     <item>
@@ -35,49 +26,7 @@
       <pubDate>Tue, 30 Jun 2015 17:12:39 -0500</pubDate>
       
       <guid>https://benbailey.me/2015/06/docker-telegraf-metrics/</guid>
-      <description>&lt;p&gt;With the &lt;a href=&#34;https://influxdb.com/blog/2015/06/11/InfluxDB-v0_9_0-released-with-developer-and-production-support.html&#34;&gt;release of InfluxDB v0.9&lt;/a&gt;, I was eager to start using Google&amp;rsquo;s &lt;a href=&#34;https://github.com/google/cadvisor&#34;&gt;cAdvisor&lt;/a&gt; to begin collecting metrics from Docker containers. Unfortunately, the new InfluxDB version comes with a new breaking API that cAdvisor still isn&amp;rsquo;t compatible with. Not only does cAdvisor not support the new API, it&amp;rsquo;s currently impossible to successfully run &lt;code&gt;go get github.com/google/cadvisor&lt;/code&gt; because of this issue. After struggling with cAdvisor for a month, I learned that InfluxDB &lt;a href=&#34;https://influxdb.com/blog/2015/06/19/Announcing-Telegraf-a-metrics-collector-for-InfluxDB.html&#34;&gt;recently rolled out&lt;/a&gt; their own metrics collector, &lt;a href=&#34;https://github.com/influxdb/telegraf&#34;&gt;Telegraf&lt;/a&gt;, which is pretty much guaranteed to have the best InfluxDB integration possible.&lt;/p&gt;
-
-&lt;p&gt;The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to &lt;code&gt;localhost&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Thus, the docker command to start up an InfluxDB cluster look something like this:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;docker run -e &lt;span style=&#34;color: #aa0000&#34;&gt;FORCE_HOSTNAME&lt;/span&gt;=auto -e &lt;span style=&#34;color: #aa0000&#34;&gt;PRE_CREATE_DB&lt;/span&gt;=&lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;telegraf&amp;quot;&lt;/span&gt; -e &lt;span style=&#34;color: #aa0000&#34;&gt;REPLI_FACTOR&lt;/span&gt;=&lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;3&amp;quot;&lt;/span&gt; --volume=/influxdb:/data --publish=&lt;span style=&#34;color: #009999&#34;&gt;8083&lt;/span&gt; --publish=&lt;span style=&#34;color: #009999&#34;&gt;8086&lt;/span&gt; --expose &lt;span style=&#34;color: #009999&#34;&gt;8090&lt;/span&gt; --expose=&lt;span style=&#34;color: #009999&#34;&gt;8099&lt;/span&gt; -d tutum/influxdb:latest
-
-docker run -e &lt;span style=&#34;color: #aa0000&#34;&gt;FORCE_HOSTNAME&lt;/span&gt;=auto -e &lt;span style=&#34;color: #aa0000&#34;&gt;SEEDS&lt;/span&gt;=&lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;master:8090&amp;quot;&lt;/span&gt; --volume=/influxdb:/data --expose &lt;span style=&#34;color: #009999&#34;&gt;8090&lt;/span&gt; --expose=&lt;span style=&#34;color: #009999&#34;&gt;8099&lt;/span&gt; -d tutum/influxdb:latest
-
-docker run -e &lt;span style=&#34;color: #aa0000&#34;&gt;FORCE_HOSTNAME&lt;/span&gt;=auto -e &lt;span style=&#34;color: #aa0000&#34;&gt;SEEDS&lt;/span&gt;=&lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;master:8090&amp;quot;&lt;/span&gt; --volume=/influxdb:/data --expose &lt;span style=&#34;color: #009999&#34;&gt;8090&lt;/span&gt; --expose=&lt;span style=&#34;color: #009999&#34;&gt;8099&lt;/span&gt; -d tutum/influxdb:latest
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Currently Telegraf only supports Vagrant officially. I made a Docker repository at &lt;code&gt;bb/telegraf&lt;/code&gt; that will suffice for now. You can start it up with&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;docker run -d bbailey/telegraf
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;and it will automatically use &lt;code&gt;localhost:8086&lt;/code&gt; as the InfluxDB URL.&lt;/p&gt;
-
-&lt;p&gt;After running these containers, you should start to see data appearing in InfluxDB. All that&amp;rsquo;s left is to access it. Luckily, it&amp;rsquo;s very simple to get important data from the InfluxDB API using the &lt;a href=&#34;https://godoc.org/github.com/influxdb/influxdb/client&#34;&gt;native Go client&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;q := &lt;span style=&#34;color: #aa5500&#34;&gt;&amp;quot;SELECT percentile(value, 95) FROM docker_system WHERE name=&amp;#39;telegraf&amp;#39; ORDER BY asc&amp;quot;&lt;/span&gt;
-res, _ := queryDB(con, q)
-fmt.Println(res[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;].Series[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;].Values[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;][&lt;span style=&#34;color: #009999&#34;&gt;1&lt;/span&gt;])
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;This gets you the 90th percentile of the CPU usage of the docker container named &amp;ldquo;telegraf.&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;In a very basic benchmark test involving &lt;code&gt;top&lt;/code&gt;, Telegraf used less than half the CPU that cAdvisor did. While Telegraf doesn&amp;rsquo;t have the same strong focus on Docker and the documentation is incredibly sparse, the metrics it provides are useful and serve enough of the same purposes, and its native InfluxDB integration makes it a welcome change from other metrics reporters.&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;InfluxDB allows for a maximum of three brokers in the current version, but that still allows for one failure which should be plenty
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <description>With the release of InfluxDB v0.9, I was eager to start using Google&amp;rsquo;s cAdvisor to begin collecting metrics from Docker containers. Unfortunately, the new InfluxDB version comes with a new breaking API that cAdvisor still isn&amp;rsquo;t compatible with. Not only does cAdvisor not support the new API, it&amp;rsquo;s currently impossible to successfully run go get github.com/google/cadvisor because of this issue. After struggling with cAdvisor for a month, I learned that InfluxDB recently rolled out their own metrics collector, Telegraf, which is pretty much guaranteed to have the best InfluxDB integration possible.</description>
     </item>
     
     <item>
@@ -86,135 +35,8 @@ fmt.Println(res[&lt;span style=&#34;color: #009999&#34;&gt;0&lt;/span&gt;].Serie
       <pubDate>Wed, 23 Jul 2014 18:54:22 -0500</pubDate>
       
       <guid>https://benbailey.me/2014/07/filtering-fun/</guid>
-      <description>
-
-&lt;p&gt;Last year my high school implemented a draconian network filter. The school district had always erred on the side of caution when it came to network filtering, putting faith in blacklists over students&amp;rsquo; willpower.&lt;/p&gt;
-
-&lt;p&gt;It was interesting to watch the filter develop over the years; in eighth grade you could bypass the filter just by using https, in tenth grade a VPN was more than sufficient. Last year, however, the district implemented UltraSurf. I&amp;rsquo;m not sure if they used a built-in blacklist or (more likely) paid a security company a large sum to develop one for them, but it was highly effective. Much too effective. Sites like tumblr were blocked for &amp;ldquo;prohibited friendship content.&amp;rdquo; If you made enough &amp;ldquo;suspicious&amp;rdquo; Google searches, your MAC address was blacklisted for an hour. Most ports were blocked, including &lt;code&gt;:22&lt;/code&gt; (ssh).&lt;/p&gt;
-
-&lt;p&gt;I took an independent study class last year. Most of the class hosted projects on Github. To clone a git repository from Github, you need to use ssh. (Or https, but the district blocked that as well). We had a few developers from the community come in to help us with our projects, and one suggested using &lt;code&gt;netcat&lt;/code&gt; to examine how the filter was shutting down ssh traffic. (It&amp;rsquo;s important to note that ssh via other ports didn&amp;rsquo;t work either.) Using &lt;code&gt;netcat&lt;/code&gt;, we figured out that the filter looked for a specific pattern in the ssh version 2 header that the version 1 header didn&amp;rsquo;t match. I went home that night and worked on getting my home Raspberry Pi running ssh version 1 so I could tunnel from school to my house, bypassing the filter. The steps I took are listed below.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Add &lt;code&gt;Port 443&lt;/code&gt; to sshd_config&lt;/li&gt;
-&lt;li&gt;Switch &lt;code&gt;Protocol&lt;/code&gt; line to &lt;code&gt;1,2&lt;/code&gt; instead of &lt;code&gt;2&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Run &lt;code&gt;ssh-keygen -t rsa1&lt;/code&gt; to generate a host key with no passphrase and save it as &lt;code&gt;/etc/ssh/ssh_host_key&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Add &lt;code&gt;HostKey /etc/ssh/ssh_host_key&lt;/code&gt; to the sshd_config&lt;/li&gt;
-&lt;li&gt;For tunneling purposes, add the &lt;code&gt;PermitTunnel yes&lt;/code&gt; to the config file&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;That should be all the necessary changes, but I included the full file below. As a bonus, I transferred the file using netcat:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;(on the server) &lt;code&gt;cat/etc/ssh/sshd_config | nc $DESTINATION_IP 9999&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;(on the client) &lt;code&gt;nc -l 9999 &amp;gt; ~/Desktop/sshd_config&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Below is the finalized sshd_config file:
-&lt;div class=&#34;highlight&#34; style=&#34;background: #ffffff&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Package generated configuration file&lt;/span&gt;
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# See the sshd_config(5) manpage for details&lt;/span&gt;
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# What ports, IPs and protocols we listen for&lt;/span&gt;
-Port &lt;span style=&#34;color: #009999&#34;&gt;22&lt;/span&gt;
-Port &lt;span style=&#34;color: #009999&#34;&gt;443&lt;/span&gt;
-
-Protocol &lt;span style=&#34;color: #009999&#34;&gt;1&lt;/span&gt;,2
-
-HostKey /etc/ssh/ssh_host_key
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# HostKeys for protocol version 2&lt;/span&gt;
-HostKey /etc/ssh/ssh_host_rsa_key
-HostKey /etc/ssh/ssh_host_dsa_key
-HostKey /etc/ssh/ssh_host_ecdsa_key
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;#Privilege Separation is turned on for security&lt;/span&gt;
-UsePrivilegeSeparation yes
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Lifetime and size of ephemeral version 1 server key&lt;/span&gt;
-KeyRegenerationInterval &lt;span style=&#34;color: #009999&#34;&gt;3600&lt;/span&gt;
-ServerKeyBits &lt;span style=&#34;color: #009999&#34;&gt;768&lt;/span&gt;
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Logging&lt;/span&gt;
-SyslogFacility AUTH
-LogLevel INFO
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Authentication:&lt;/span&gt;
-LoginGraceTime &lt;span style=&#34;color: #009999&#34;&gt;120&lt;/span&gt;
-PermitRootLogin yes
-StrictModes yes
-
-RSAAuthentication yes
-PubkeyAuthentication yes
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;#AuthorizedKeysFile  %h/.ssh/authorized_keys&lt;/span&gt;
-
-PermitTunnel yes
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Don&amp;#39;t read the user&amp;#39;s ~/.rhosts and ~/.shosts files&lt;/span&gt;
-IgnoreRhosts yes
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# For this to work you will also need host keys in /etc/ssh_known_hosts&lt;/span&gt;
-RhostsRSAAuthentication no
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# similar for protocol version 2&lt;/span&gt;
-HostbasedAuthentication no
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Uncomment if you don&amp;#39;t trust ~/.ssh/known_hosts for RhostsRSAAuthentication&lt;/span&gt;
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;#IgnoreUserKnownHosts yes&lt;/span&gt;
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# To enable empty passwords, change to yes (NOT RECOMMENDED)&lt;/span&gt;
-PermitEmptyPasswords yes
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Change to yes to enable challenge-response passwords (beware issues with&lt;/span&gt;
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# some PAM modules and threads)&lt;/span&gt;
-ChallengeResponseAuthentication no
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Change to no to disable tunnelled clear text passwords&lt;/span&gt;
-PasswordAuthentication yes
-
-X11Forwarding yes
-X11DisplayOffset &lt;span style=&#34;color: #009999&#34;&gt;10&lt;/span&gt;
-PrintMotd no
-PrintLastLog yes
-TCPKeepAlive yes
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;#UseLogin no&lt;/span&gt;
-
-&lt;span style=&#34;color: #aaaaaa; font-style: italic&#34;&gt;# Allow client to pass locale environment variables&lt;/span&gt;
-AcceptEnv LANG LC_*
-
-Subsystem sftp /usr/lib/openssh/sftp-server
-
-UsePAM yes
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s how to use that server as a tunnel for web traffic.&lt;/p&gt;
-
-&lt;h2 id=&#34;on-osx&#34;&gt;On OSX&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Run the command &lt;code&gt;ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Open System Preferences and go to &lt;code&gt;Network&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Click on &lt;code&gt;Advanced&lt;/code&gt;, then &lt;code&gt;Proxies&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Check the box next to &lt;code&gt;SOCKS Proxy&lt;/code&gt;, and type in &lt;code&gt;127.0.0.1&lt;/code&gt; as the server, and &lt;code&gt;8080&lt;/code&gt; as the port.&lt;/li&gt;
-&lt;li&gt;Save your settings (make sure you hit &lt;code&gt;Apply&lt;/code&gt;) and enjoy!&lt;/li&gt;
-&lt;li&gt;(You may need to tell your browser to use system proxy settings).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;on-linux&#34;&gt;On Linux&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Run the command &lt;code&gt;ssh -D 8080 -C -N -p 443 USERNAME@173.172.105.59 -1&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Configure your browser to use a SOCKS5 proxy on &lt;code&gt;localhost:8080&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;on-windows&#34;&gt;On Windows&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Download &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;PuTTY&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Open PuTTY. Under the Session tab, put in the host name of the server you set up (or its IP address).&lt;/li&gt;
-&lt;li&gt;Expand the SSH tab and select Tunnels. For source port, put in 8080, and select &lt;code&gt;Dynamic&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Leave the hostname blank, click &lt;code&gt;OK&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Click open, or go back to the Sessions tab and save the configuration so you can load it later.&lt;/li&gt;
-&lt;li&gt;Browse to a normally-blocked site. You should be able to access it. If not, try setting your browser to use a SOCKS5 proxy with &lt;code&gt;localhost&lt;/code&gt; as the host and &lt;code&gt;8080&lt;/code&gt; as the port.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;This setup continued to work for the rest of the year, and should still work now.&lt;/p&gt;
-</description>
+      <description>Last year my high school implemented a draconian network filter. The school district had always erred on the side of caution when it came to network filtering, putting faith in blacklists over students&amp;rsquo; willpower.
+It was interesting to watch the filter develop over the years; in eighth grade you could bypass the filter just by using https, in tenth grade a VPN was more than sufficient. Last year, however, the district implemented UltraSurf.</description>
     </item>
     
     <item>
@@ -223,34 +45,10 @@ UsePAM yes
       <pubDate>Sun, 20 Jul 2014 21:16:36 -0500</pubDate>
       
       <guid>https://benbailey.me/2014/07/ned-vizzini/</guid>
-      <description>&lt;p&gt;I spent the afternoon lost in Ned Vizzini’s &lt;em&gt;Teen Angst? Naah…&lt;/em&gt;, a collection of short essays about his experiences as a teenager. It’s candid, thoughtful, and entertaining.&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;more&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Ned Vizzini also wrote &lt;em&gt;It’s Kind Of A Funny Story&lt;/em&gt;, a book based on his week-long stay in a mental hospital that changed his life. The book itself went on to change so many other lives.&lt;/p&gt;
-
-&lt;p&gt;He killed himself last winter.&lt;/p&gt;
-
-&lt;p&gt;I don’t know why.&lt;/p&gt;
-
-&lt;p&gt;This book affected me more than most books I’ve read. I’m not sure why. The last chapter is a note from Ned about what happened to him after high school. He sounded like he was doing so well. He &lt;em&gt;was&lt;/em&gt; doing so well. And now he’s gone.&lt;/p&gt;
-
-&lt;p&gt;Maybe I feel this way because, in a strange way, he reminded me of me. He went to a magnet high school, was rather socially awkward, etc. But I feel like anyone could relate to his experiences. &lt;em&gt;Teen Angst?&lt;/em&gt; makes Ned Vizzini feel like a real person. It reads as if he&amp;rsquo;s hanging out in your dorm room and sharing stories about high school.&lt;/p&gt;
-
-&lt;p&gt;I wish I could have got to know him. I feel like I missed out on an opportunity to make a new friend, even though I doubt I ever would have met him. He seems like a great person.&lt;/p&gt;
-
-&lt;p&gt;I wish I knew why, but it doesn’t really matter. It happened, and now it’s over.&lt;/p&gt;
-
-&lt;p&gt;I miss him. And I don’t know why, but I wish he were here.&lt;/p&gt;
-
-&lt;p&gt;The book ends kind of like this:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I’m a writer from now on, for better or worse, and so far it’s  mostly all better…Do I have days where I wake up and no Muses are there and I don’t even want to deal with my life anymore? Sure…But above and beyond that are the days when the words come together and I sit back in my chair and go, “Man, this is fun.” And there are the days where I get an e-mail or a letter from someone who read my writing and liked it and I just slap myself in the head for an entirely different reason, because I’m blessed.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;I wish I had written you a letter, Ned.&lt;/p&gt;
-</description>
+      <description>I spent the afternoon lost in Ned Vizzini’s Teen Angst? Naah…, a collection of short essays about his experiences as a teenager. It’s candid, thoughtful, and entertaining.
+Ned Vizzini also wrote It’s Kind Of A Funny Story, a book based on his week-long stay in a mental hospital that changed his life. The book itself went on to change so many other lives.
+He killed himself last winter.
+I don’t know why.</description>
     </item>
     
     <item>
@@ -259,24 +57,8 @@ UsePAM yes
       <pubDate>Sun, 06 Apr 2014 21:17:54 -0500</pubDate>
       
       <guid>https://benbailey.me/2014/04/stop-making-sense/</guid>
-      <description>&lt;p&gt;I’ll always remember the first time I heard David Byrne say “Hi. I’ve got a tape I want to play.” As soon as he walks out onto the stage and pops a tape in his boom box, you know you’re in for a treat.&lt;/p&gt;
-
-&lt;p&gt;&lt;span class=&#34;more&#34;&gt;&lt;/p&gt;
-
-&lt;p&gt;Byrne launches in to an energetic and captivating acoustic performance of “Psycho Killer”, one of Talking Heads&amp;rsquo; most well-known songs, reeling around the stage with a trademark paranoid look in his eyes.&lt;/p&gt;
-
-&lt;p&gt;Byrne’s performance is the opening to what many consider the greatest concert film of all time, &lt;em&gt;Stop Making Sense&lt;/em&gt;. The movie was filmed over the course of three nights at Hollywood’s Pantages Theater in December 1983 using mostly white light and lengthy shots. Byrne is joined by one member of the band for each successive song, until the stage is packed for “Burning Down The House”. The film also features Byrne’s iconic oversized suit and eccentric dance moves.&lt;/p&gt;
-
-&lt;p&gt;I’m not exactly sure why I love &lt;em&gt;Stop Making Sense&lt;/em&gt; so much. The music certainly plays a large role–every song featured is catchy and meaningful. The pure energy which the film manages to convey is also impressive and moving. The band’s technical skill is easily observable; Bassist Tina Weymouth bass and drummer Chris Frantz artfully create the perfect backdrop groove for Byrne to dance across and manipulate. And yet the band manages to appear nonchalant and intense at the same time despite Byrne’s tense, paranoid character.&lt;/p&gt;
-
-&lt;p&gt;The moment when the band is finally all on stage for “Burning Down The House” is a particularly stunning one. The amazingly energetic performance takes what is perhaps Talking Heads&amp;rsquo; most famous song to even greater heights.&lt;/p&gt;
-
-&lt;p&gt;Perhaps my favorite part of &lt;em&gt;Stop Making Sense&lt;/em&gt; is the performance of “Once In A Lifetime”. Byrne has said that the song’s lyrics are modeled after the unique syntax of televangelists, and it shows. The song builds steadily until it reaches a crescendo as Byrne shouts “time isn’t holding us, time isn’t after us” over cascading, forceful guitar strums. One wide, contrasting “chiaroscuro” shot of Byrne makes up over seventy-five percent of the song’s five minute duration, allowing the viewer to focus completely on the song.&lt;/p&gt;
-
-&lt;p&gt;The film ends with “Crosseyed and Painless”, the first song that features shots of the audience. The audience inclusion surprises the viewer and helps them feel involved in the final moments of the concert, knowing that they’ve witnessed something unique.&lt;/p&gt;
-
-&lt;p&gt;There’s nothing like &lt;em&gt;Stop Making Sense&lt;/em&gt;.&lt;/p&gt;
-</description>
+      <description>I’ll always remember the first time I heard David Byrne say “Hi. I’ve got a tape I want to play.” As soon as he walks out onto the stage and pops a tape in his boom box, you know you’re in for a treat.
+Byrne launches in to an energetic and captivating acoustic performance of “Psycho Killer”, one of Talking Heads&amp;rsquo; most well-known songs, reeling around the stage with a trademark paranoid look in his eyes.</description>
     </item>
     
     <item>
@@ -285,26 +67,7 @@ UsePAM yes
       <pubDate>Thu, 04 Aug 2011 21:19:51 -0500</pubDate>
       
       <guid>https://benbailey.me/2011/08/game-making/</guid>
-      <description>&lt;p&gt;This past weekend I went to Dallas to visit a friend. We&amp;rsquo;d always shared an interest in games, but over the last six months, my friend had actually started to code his own games from scratch. Quite frankly, I was impressed. While I&amp;rsquo;ve delved into many different coding projects over the last few months, I&amp;rsquo;d actually forgotten about one of my original goals; to develop a game. While my friend&amp;rsquo;s games were not masterpieces, he had made several fun clones of games like Mario Kart, and a maze game with Pokemon sprites. Most of these he coded in DarkBasic.&lt;/p&gt;
-
-&lt;p&gt;Naturally, after playing around with the games a bit, we decided to continue improving them. Coding isn&amp;rsquo;t much of a two-person job though, so eventually I started work on my text-based RPG I wrote in Ruby two years ago. It seems that we both have a touch of programming ADD though, and my friend started a new 2D fighting game (which I&amp;rsquo;ll add is coming along nicely) and I wrote &lt;a href=&#34;https://gist.github.com/1126940&#34;&gt;restaurbot&lt;/a&gt;, a simple and comical restaurant robot.&lt;/p&gt;
-
-&lt;p&gt;It was at this point that I emailed my dad, asking for advice on creating text-based games in Ruby (what I had wasn&amp;rsquo;t working too well). He provided me with many links, but most were graphical. This, of course, intrigued me. Could I achieve what my friend was doing in a simpler language I already understood?&lt;/p&gt;
-
-&lt;p&gt;This particular link was to a Ruby library called &lt;a href=&#34;http://www.libgosu.org/&#34;&gt;Gosu&lt;/a&gt;. This library allows you to easily create games in Ruby or C++. Getting started was simple: &lt;code&gt;sudo gem install gosu&lt;/code&gt; did the trick (I installed the other gems suggested on the homepage later). With the help of the simple tutorial on &lt;a href=&#34;https://github.com/jlnr/gosu&#34;&gt;Gosu&amp;rsquo;s github page&lt;/a&gt;, I had a game with working controls and graphics up within twenty minutes.&lt;/p&gt;
-
-&lt;p&gt;When I showed this to my friend and told him how easy it was, he wanted to try it for himself. I helped him install Ruby on his XP machine, and most of the gems ran smoothly, and he quickly learned how Gosu and Ruby work (in fact, he&amp;rsquo;s about to send me the game files he&amp;rsquo;s been working on).&lt;/p&gt;
-
-&lt;p&gt;The real fun started when we began modifying the Gosu example projects that come with the gem. &lt;em&gt;(Note: We had no luck finding the directory on my friend&amp;rsquo;s machine, so I sent him my files, which, due to RVM, were located in&lt;/em&gt; &lt;code&gt;~/.rvm/gems/ruby-VERSION/gems/gosu-VERSION/examples&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;The CptnRuby example was definitely the most fun to change. It provides a great starting code base for a sidescroller (which I&amp;rsquo;m in fact using for my next project). The example shows you how to get images from tilesets and implement gravity, both useful, especially if you want to make a platformer.&lt;/p&gt;
-
-&lt;p&gt;When I really started enjoying and understanding Gosu, however, was after watching the &lt;a href=&#34;http://ruby4kids.com/ruby4kids/public/web_page/14&#34;&gt;ruby4kids screencasts&lt;/a&gt; on it (lame, I know). My first game, &lt;a href=&#34;http://benbailey.me/spritedodge/&#34;&gt;SpriteDodge&lt;/a&gt;, is based off of the example project they create there.&lt;/p&gt;
-
-&lt;p&gt;Once you get off the ground, you&amp;rsquo;ll find Gosu very easy to use and logical in its implementation into one of many&amp;rsquo;s favorite programming languages.&lt;/p&gt;
-
-&lt;p&gt;If you get stuck with Gosu, make sure you check the &lt;a href=&#34;http://www.libgosu.org/rdoc/&#34;&gt;Ruby rdoc&lt;/a&gt; for information, or hop in the #gosu channel on freenode.net (the people there are very helpful). If you need art for your games, you should check out &lt;a href=&#34;http://lostgarden.com&#34;&gt;lostgarden&lt;/a&gt;, or do a quick Google search for &amp;lsquo;free game assets.&amp;rsquo; And when you finish your first game, feel free to post it in the &lt;a href=&#34;http://www.libgosu.org/cgi-bin/mwf/board_show.pl?bid=2&#34;&gt;showcase section&lt;/a&gt; of the Gosu forums. Enjoy, and good luck!&lt;/p&gt;
-</description>
+      <description>This past weekend I went to Dallas to visit a friend. We&amp;rsquo;d always shared an interest in games, but over the last six months, my friend had actually started to code his own games from scratch. Quite frankly, I was impressed. While I&amp;rsquo;ve delved into many different coding projects over the last few months, I&amp;rsquo;d actually forgotten about one of my original goals; to develop a game. While my friend&amp;rsquo;s games were not masterpieces, he had made several fun clones of games like Mario Kart, and a maze game with Pokemon sprites.</description>
     </item>
     
   </channel>
