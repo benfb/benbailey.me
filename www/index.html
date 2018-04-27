@@ -77,29 +77,6 @@
         
           <div class="post">
             <h1 class="post-title">
-              <a href="https://benbailey.me/2018/01/serverless-smoke-testing-lambda-go/">
-                Serverless Smoke Testing with Lambda and Go
-              </a>
-            </h1>
-
-            <span class="post-date">Tue, Jan 23, 2018</span>
-
-            <p>I had the opportunity to do some contract work for <a href="https://pingboard.com">Pingboard</a> over my winter break. I was tasked with implementing smoke testing. I chose to use <a href="https://aws.amazon.com/lambda/">Lambda</a>.</p>
-
-<p>All of the AWS architecture is managed by <a href="http://terraform.io">Terraform</a>. The full architecture for the system looks like this:</p>
-
-<p><img src="smoke-tester-diagram.png" alt="Smoke tester diagram" /></p>
-
-<p>Originally, it was much simpler. However, due to internal startup process requirements, we needed to implement a delay between deployments and running the tests. Since Lambda doesn&rsquo;t support delayed instantiation, the more complex architecture above is required.</p>
-
-<p>When a deploy begins on Heroku, it sends a webhook to an AWS API Gateway URL. The API Gateway automatically passes the message on to an SQS queue, which has a built-in delay until messages become visible. When there are any messages available in the queue for a minute, a Cloudwatch alarm triggers an SNS alarm, which then sends a notification to the Lambda function. The function runs the tests and then posts either a success message or a list of failures to a Slack alerts channel.</p>
-
-          </div>
-        
-      
-        
-          <div class="post">
-            <h1 class="post-title">
               <a href="https://benbailey.me/2017/08/a-nomad-primer/">
                 A Nomad Primer
               </a>

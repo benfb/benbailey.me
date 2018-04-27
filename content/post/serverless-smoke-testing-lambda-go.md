@@ -1,7 +1,7 @@
 ---
 title: "Serverless Smoke Testing with Lambda and Go"
 date: 2018-01-23T13:14:21-05:00
-draft: false
+draft: true
 ---
 
 I had the opportunity to do some contract work for [Pingboard][pingboard] over my winter break. I was tasked with implementing smoke testing. I chose to use [Lambda][lambda].
