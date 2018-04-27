@@ -6,10 +6,21 @@
     <description>Recent content in Posts on benfb</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 03 Aug 2017 19:32:13 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jan 2018 13:14:21 -0500</lastBuildDate>
     
 	<atom:link href="https://benbailey.me/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless Smoke Testing with Lambda and Go</title>
+      <link>https://benbailey.me/2018/01/serverless-smoke-testing-lambda-go/</link>
+      <pubDate>Tue, 23 Jan 2018 13:14:21 -0500</pubDate>
+      
+      <guid>https://benbailey.me/2018/01/serverless-smoke-testing-lambda-go/</guid>
+      <description>I had the opportunity to do some contract work for Pingboard over my winter break. I was tasked with implementing smoke testing. I chose to use Lambda.
+All of the AWS architecture is managed by Terraform. The full architecture for the system looks like this:
+Originally, it was much simpler. However, due to internal startup process requirements, we needed to implement a delay between deployments and running the tests. Since Lambda doesn&amp;rsquo;t support delayed instantiation, the more complex architecture above is required.</description>
+    </item>
     
     <item>
       <title>A Nomad Primer</title>

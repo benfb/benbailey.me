@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   
-  <title>cumulus &middot; benfb</title>
+  <title>Tags &middot; benfb</title>
   
 
   
@@ -26,10 +26,14 @@
 
   
   
+    <link href="https://benbailey.me/tags/index.xml" rel="alternate" type="application/rss+xml" title="benfb" />
+    <link href="https://benbailey.me/tags/index.xml" rel="feed" type="application/rss+xml" title="benfb" />
+  
 </head>
 
-  <body class="theme-base-08">
-    <div class="sidebar">
+<body class="theme-base-08 ">
+
+<div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
@@ -59,50 +63,17 @@
     <a href="mailto:bennettbailey@gmail.com"><i class="fa fa-envelope-square"></i></a>&nbsp;&nbsp;
     <a href="https://twitter.com/bennett"><i class="fa fa-twitter-square"></i></a>&nbsp;&nbsp;
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
-    <a href="" type="application/rss+xml"><i class="fa fa-rss-square"></i></a>&nbsp;&nbsp;
+    <a href="https://benbailey.me/tags/index.xml" type="application/rss+xml"><i class="fa fa-rss-square"></i></a>&nbsp;&nbsp;
 
     <p>&copy; 2018. All rights reserved. </p>
   </div>
 </div>
 
 
-    <div class="content container">
-      <div class="post">
-        <h1>cumulus
-            
-        </h1>
+  <div class="content container">
+    <ul class="posts">
         
-
-<h4 id="cumulus-is-a-command-line-tool-for-injecting-coreos-cloud-configs-into-aws-cloud-formation-templates">Cumulus is a command-line tool for injecting CoreOS cloud-configs into AWS Cloud Formation templates</h4>
-
-<pre><code>go get github.com/benfb/cumulus
-go install github.com/benfb/cumulus
-</code></pre>
-
-<h3 id="why">Why?</h3>
-
-<p>CoreOS is a great operating system for running Docker contianers, and it can be configured easily using <a href="https://coreos.com/os/docs/latest/cloud-config.html">Cloud-Config</a>. However, if you want to use Amazon&rsquo;s CloudFormation to create easily replicable CoreOS stacks, you need to inject the Cloud-Config into the CloudFormation template. Cumulus makes it easy to do so without having to manually escape quotes, add newlines, and copy and paste.</p>
-
-<h3 id="example">Example</h3>
-
-<p>This will format a cloud-config.yml into JSON format and inject it into the cloud-formation.json template, replacing whatever is between lines 146 and 267.</p>
-
-<p><code>cumulus inject cloud-config.yaml cloud-formation.json 146 267</code></p>
-
-<p>Alternatively, you can just format the cloud-config and write it to a file.</p>
-
-<p><code>cumulus format cloud-config.yaml --out cloud-formation.json</code></p>
-
-<p>Or you can output to STDOUT and pipe the output somewhere else.</p>
-
-<p><code>cumulus format cloud-config.yaml | cat -n</code></p>
-
-<p>Finally, if you&rsquo;ve already done the hard work of formatting your cloud-config it can be inserted automatically.</p>
-
-<p><code>cumulus inject --format=false formatted-cloud-config.yaml cloud-formation.json 146 267</code></p>
-
-      </div>
-    </div>
-
-  </body>
+    </ul>
+  </div>
+</body>
 </html>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://benbailey.me/2018/01/serverless-smoke-testing-lambda-go/</loc>
+    <lastmod>2018-01-23T13:14:21-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://benbailey.me/2017/08/a-nomad-primer/</loc>
     <lastmod>2017-08-03T19:32:13-05:00</lastmod>
   </url>
@@ -70,7 +75,7 @@
   
   <url>
     <loc>https://benbailey.me/post/</loc>
-    <lastmod>2017-08-03T19:32:13-05:00</lastmod>
+    <lastmod>2018-01-23T13:14:21-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -81,7 +86,7 @@
   
   <url>
     <loc>https://benbailey.me/</loc>
-    <lastmod>2017-08-03T19:32:13-05:00</lastmod>
+    <lastmod>2018-01-23T13:14:21-05:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -3,7 +3,7 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.25.1" />
+  <meta name="generator" content="Hugo 0.40" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -34,7 +34,7 @@
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
       <p class="lead">
-       Student and devops in Amherst and Austin. 
+       DevOps in Austin at Pingboard. 
       </p>
     </div>
 
@@ -61,7 +61,7 @@
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
     <a href="" type="application/rss+xml"><i class="fa fa-rss-square"></i></a>&nbsp;&nbsp;
 
-    <p>&copy; 2017. All rights reserved. </p>
+    <p>&copy; 2018. All rights reserved. </p>
   </div>
 </div>
 
@@ -96,77 +96,75 @@
 </ol>
 
 <p>Below is the finalized sshd_config file:
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span><span style="color: #aaaaaa; font-style: italic"># Package generated configuration file</span>
-<span style="color: #aaaaaa; font-style: italic"># See the sshd_config(5) manpage for details</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#aaa;font-style:italic"># Package generated configuration file
+</span><span style="color:#aaa;font-style:italic"># See the sshd_config(5) manpage for details
+</span><span style="color:#aaa;font-style:italic"></span>
+<span style="color:#aaa;font-style:italic"># What ports, IPs and protocols we listen for
+</span><span style="color:#aaa;font-style:italic"></span>Port <span style="color:#099">22</span>
+Port <span style="color:#099">443</span>
 
-<span style="color: #aaaaaa; font-style: italic"># What ports, IPs and protocols we listen for</span>
-Port <span style="color: #009999">22</span>
-Port <span style="color: #009999">443</span>
-
-Protocol <span style="color: #009999">1</span>,2
+Protocol <span style="color:#099">1</span>,2
 
 HostKey /etc/ssh/ssh_host_key
 
-<span style="color: #aaaaaa; font-style: italic"># HostKeys for protocol version 2</span>
-HostKey /etc/ssh/ssh_host_rsa_key
+<span style="color:#aaa;font-style:italic"># HostKeys for protocol version 2
+</span><span style="color:#aaa;font-style:italic"></span>HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_dsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
-<span style="color: #aaaaaa; font-style: italic">#Privilege Separation is turned on for security</span>
-UsePrivilegeSeparation yes
+<span style="color:#aaa;font-style:italic">#Privilege Separation is turned on for security
+</span><span style="color:#aaa;font-style:italic"></span>UsePrivilegeSeparation yes
 
-<span style="color: #aaaaaa; font-style: italic"># Lifetime and size of ephemeral version 1 server key</span>
-KeyRegenerationInterval <span style="color: #009999">3600</span>
-ServerKeyBits <span style="color: #009999">768</span>
+<span style="color:#aaa;font-style:italic"># Lifetime and size of ephemeral version 1 server key
+</span><span style="color:#aaa;font-style:italic"></span>KeyRegenerationInterval <span style="color:#099">3600</span>
+ServerKeyBits <span style="color:#099">768</span>
 
-<span style="color: #aaaaaa; font-style: italic"># Logging</span>
-SyslogFacility AUTH
+<span style="color:#aaa;font-style:italic"># Logging
+</span><span style="color:#aaa;font-style:italic"></span>SyslogFacility AUTH
 LogLevel INFO
 
-<span style="color: #aaaaaa; font-style: italic"># Authentication:</span>
-LoginGraceTime <span style="color: #009999">120</span>
+<span style="color:#aaa;font-style:italic"># Authentication:
+</span><span style="color:#aaa;font-style:italic"></span>LoginGraceTime <span style="color:#099">120</span>
 PermitRootLogin yes
 StrictModes yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes
-<span style="color: #aaaaaa; font-style: italic">#AuthorizedKeysFile  %h/.ssh/authorized_keys</span>
-
+<span style="color:#aaa;font-style:italic">#AuthorizedKeysFile  %h/.ssh/authorized_keys
+</span><span style="color:#aaa;font-style:italic"></span>
 PermitTunnel yes
 
-<span style="color: #aaaaaa; font-style: italic"># Don&#39;t read the user&#39;s ~/.rhosts and ~/.shosts files</span>
-IgnoreRhosts yes
-<span style="color: #aaaaaa; font-style: italic"># For this to work you will also need host keys in /etc/ssh_known_hosts</span>
-RhostsRSAAuthentication no
-<span style="color: #aaaaaa; font-style: italic"># similar for protocol version 2</span>
-HostbasedAuthentication no
-<span style="color: #aaaaaa; font-style: italic"># Uncomment if you don&#39;t trust ~/.ssh/known_hosts for RhostsRSAAuthentication</span>
-<span style="color: #aaaaaa; font-style: italic">#IgnoreUserKnownHosts yes</span>
+<span style="color:#aaa;font-style:italic"># Don&#39;t read the user&#39;s ~/.rhosts and ~/.shosts files
+</span><span style="color:#aaa;font-style:italic"></span>IgnoreRhosts yes
+<span style="color:#aaa;font-style:italic"># For this to work you will also need host keys in /etc/ssh_known_hosts
+</span><span style="color:#aaa;font-style:italic"></span>RhostsRSAAuthentication no
+<span style="color:#aaa;font-style:italic"># similar for protocol version 2
+</span><span style="color:#aaa;font-style:italic"></span>HostbasedAuthentication no
+<span style="color:#aaa;font-style:italic"># Uncomment if you don&#39;t trust ~/.ssh/known_hosts for RhostsRSAAuthentication
+</span><span style="color:#aaa;font-style:italic">#IgnoreUserKnownHosts yes
+</span><span style="color:#aaa;font-style:italic"></span>
+<span style="color:#aaa;font-style:italic"># To enable empty passwords, change to yes (NOT RECOMMENDED)
+</span><span style="color:#aaa;font-style:italic"></span>PermitEmptyPasswords yes
 
-<span style="color: #aaaaaa; font-style: italic"># To enable empty passwords, change to yes (NOT RECOMMENDED)</span>
-PermitEmptyPasswords yes
+<span style="color:#aaa;font-style:italic"># Change to yes to enable challenge-response passwords (beware issues with
+</span><span style="color:#aaa;font-style:italic"># some PAM modules and threads)
+</span><span style="color:#aaa;font-style:italic"></span>ChallengeResponseAuthentication no
 
-<span style="color: #aaaaaa; font-style: italic"># Change to yes to enable challenge-response passwords (beware issues with</span>
-<span style="color: #aaaaaa; font-style: italic"># some PAM modules and threads)</span>
-ChallengeResponseAuthentication no
-
-<span style="color: #aaaaaa; font-style: italic"># Change to no to disable tunnelled clear text passwords</span>
-PasswordAuthentication yes
+<span style="color:#aaa;font-style:italic"># Change to no to disable tunnelled clear text passwords
+</span><span style="color:#aaa;font-style:italic"></span>PasswordAuthentication yes
 
 X11Forwarding yes
-X11DisplayOffset <span style="color: #009999">10</span>
+X11DisplayOffset <span style="color:#099">10</span>
 PrintMotd no
 PrintLastLog yes
 TCPKeepAlive yes
-<span style="color: #aaaaaa; font-style: italic">#UseLogin no</span>
-
-<span style="color: #aaaaaa; font-style: italic"># Allow client to pass locale environment variables</span>
-AcceptEnv LANG LC_*
+<span style="color:#aaa;font-style:italic">#UseLogin no
+</span><span style="color:#aaa;font-style:italic"></span>
+<span style="color:#aaa;font-style:italic"># Allow client to pass locale environment variables
+</span><span style="color:#aaa;font-style:italic"></span>AcceptEnv LANG LC_*
 
 Subsystem sftp /usr/lib/openssh/sftp-server
 
-UsePAM yes
-</pre></div>
-</p>
+UsePAM yes</code></pre></div></p>
 
 <p>Here&rsquo;s how to use that server as a tunnel for web traffic.</p>
 

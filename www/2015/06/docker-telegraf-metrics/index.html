@@ -3,7 +3,7 @@
 <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.25.1" />
+  <meta name="generator" content="Hugo 0.40" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -34,7 +34,7 @@
     <div class="sidebar-about">
       <a href="https://benbailey.me/"><h1>benfb</h1></a>
       <p class="lead">
-       Student and devops in Amherst and Austin. 
+       DevOps in Austin at Pingboard. 
       </p>
     </div>
 
@@ -61,7 +61,7 @@
     <a href="https://github.com/benfb"><i class="fa fa-github-square"></i></a>&nbsp;&nbsp;
     <a href="" type="application/rss+xml"><i class="fa fa-rss-square"></i></a>&nbsp;&nbsp;
 
-    <p>&copy; 2017. All rights reserved. </p>
+    <p>&copy; 2018. All rights reserved. </p>
   </div>
 </div>
 
@@ -74,33 +74,27 @@
 				
 			      <p>With the <a href="https://influxdb.com/blog/2015/06/11/InfluxDB-v0_9_0-released-with-developer-and-production-support.html">release of InfluxDB v0.9</a>, I was eager to start using Google&rsquo;s <a href="https://github.com/google/cadvisor">cAdvisor</a> to begin collecting metrics from Docker containers. Unfortunately, the new InfluxDB version comes with a new breaking API that cAdvisor still isn&rsquo;t compatible with. Not only does cAdvisor not support the new API, it&rsquo;s currently impossible to successfully run <code>go get github.com/google/cadvisor</code> because of this issue. After struggling with cAdvisor for a month, I learned that InfluxDB <a href="https://influxdb.com/blog/2015/06/19/Announcing-Telegraf-a-metrics-collector-for-InfluxDB.html">recently rolled out</a> their own metrics collector, <a href="https://github.com/influxdb/telegraf">Telegraf</a>, which is pretty much guaranteed to have the best InfluxDB integration possible.</p>
 
-<p>The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup> In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to <code>localhost</code>.</p>
+<p>The new version of InfluxDB also includes alpha support for clustering, which is key when working with large infrastructures. In InfluxDB, each node is a broker node, a data node, or both. Data nodes host the data, while brokers are members of a raft consensus group.<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup> In this Docker cluster, I chose to run a data node on every machine in order to reduce network throughput at the cost of slightly increased disk usage. This decision also makes Telegraf easier to set up, as with the right network configuration it can just report to <code>localhost</code>.</p>
 
 <p>Thus, the docker command to start up an InfluxDB cluster look something like this:</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">PRE_CREATE_DB</span>=<span style="color: #aa5500">&quot;telegraf&quot;</span> -e <span style="color: #aa0000">REPLI_FACTOR</span>=<span style="color: #aa5500">&quot;3&quot;</span> --volume=/influxdb:/data --publish=<span style="color: #009999">8083</span> --publish=<span style="color: #009999">8086</span> --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
-
-docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">SEEDS</span>=<span style="color: #aa5500">&quot;master:8090&quot;</span> --volume=/influxdb:/data --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
-
-docker run -e <span style="color: #aa0000">FORCE_HOSTNAME</span>=auto -e <span style="color: #aa0000">SEEDS</span>=<span style="color: #aa5500">&quot;master:8090&quot;</span> --volume=/influxdb:/data --expose <span style="color: #009999">8090</span> --expose=<span style="color: #009999">8099</span> -d tutum/influxdb:latest
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker run -e <span style="color:#a00">FORCE_HOSTNAME</span>=auto -e <span style="color:#a00">PRE_CREATE_DB</span>=<span style="color:#a50">&#34;telegraf&#34;</span> -e <span style="color:#a00">REPLI_FACTOR</span>=<span style="color:#a50">&#34;3&#34;</span> --volume=/influxdb:/data --publish=<span style="color:#099">8083</span> --publish=<span style="color:#099">8086</span> --expose <span style="color:#099">8090</span> --expose=<span style="color:#099">8099</span> -d tutum/influxdb:latest<span style="color:#f00;background-color:#faa">
+</span><span style="color:#f00;background-color:#faa">
+</span><span style="color:#f00;background-color:#faa"></span>docker run -e <span style="color:#a00">FORCE_HOSTNAME</span>=auto -e <span style="color:#a00">SEEDS</span>=<span style="color:#a50">&#34;master:8090&#34;</span> --volume=/influxdb:/data --expose <span style="color:#099">8090</span> --expose=<span style="color:#099">8099</span> -d tutum/influxdb:latest<span style="color:#f00;background-color:#faa">
+</span><span style="color:#f00;background-color:#faa">
+</span><span style="color:#f00;background-color:#faa"></span>docker run -e <span style="color:#a00">FORCE_HOSTNAME</span>=auto -e <span style="color:#a00">SEEDS</span>=<span style="color:#a50">&#34;master:8090&#34;</span> --volume=/influxdb:/data --expose <span style="color:#099">8090</span> --expose=<span style="color:#099">8099</span> -d tutum/influxdb:latest</code></pre></div>
 
 <p>Currently Telegraf only supports Vagrant officially. I made a Docker repository at <code>bb/telegraf</code> that will suffice for now. You can start it up with</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>docker run -d bbailey/telegraf
-</pre></div>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">docker run -d bbailey/telegraf</code></pre></div>
 
 <p>and it will automatically use <code>localhost:8086</code> as the InfluxDB URL.</p>
 
 <p>After running these containers, you should start to see data appearing in InfluxDB. All that&rsquo;s left is to access it. Luckily, it&rsquo;s very simple to get important data from the InfluxDB API using the <a href="https://godoc.org/github.com/influxdb/influxdb/client">native Go client</a>:</p>
 
-<div class="highlight" style="background: #ffffff"><pre style="line-height: 125%"><span></span>q := <span style="color: #aa5500">&quot;SELECT percentile(value, 95) FROM docker_system WHERE name=&#39;telegraf&#39; ORDER BY asc&quot;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">q := <span style="color:#a50">&#34;SELECT percentile(value, 95) FROM docker_system WHERE name=&#39;telegraf&#39; ORDER BY asc&#34;</span>
 res, _ := queryDB(con, q)
-fmt.Println(res[<span style="color: #009999">0</span>].Series[<span style="color: #009999">0</span>].Values[<span style="color: #009999">0</span>][<span style="color: #009999">1</span>])
-</pre></div>
-
+fmt.Println(res[<span style="color:#099">0</span>].Series[<span style="color:#099">0</span>].Values[<span style="color:#099">0</span>][<span style="color:#099">1</span>])</code></pre></div>
 
 <p>This gets you the 90th percentile of the CPU usage of the docker container named &ldquo;telegraf.&rdquo;</p>
 
