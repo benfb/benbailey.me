@@ -1,0 +1,124 @@
+#sidebarMenu {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  margin-top: auto;
+  transform: translateX(-250px);
+  transition: transform 250ms ease-in-out;
+  border-top: 1px solid #cacaca;
+  background: $deputy-color;
+  box-shadow: 2px 2px 2px #cacaca;
+}
+
+.sidebarMenuInner {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+    cursor: pointer;
+
+    a {
+      display: block;
+      padding: 20px;
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+  }
+
+  li:hover {
+    background-color: $theme-color;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+  }
+
+
+}
+
+input {
+  &[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+  }
+
+  &[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+  }
+}
+
+.sidebarIconToggle {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 18px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+}
+
+.spinner {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: $black;
+}
+
+.horizontal {
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+.diagonal {
+  &.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+  }
+
+  &.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+  }
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > {
+  .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+  }
+
+  .diagonal {
+    &.part-1 {
+      transition: all 0.3s;
+      box-sizing: border-box;
+      transform: rotate(135deg);
+      margin-top: 8px;
+    }
+
+    &.part-2 {
+      transition: all 0.3s;
+      box-sizing: border-box;
+      transform: rotate(-135deg);
+      margin-top: -9px;
+    }
+  }
+}

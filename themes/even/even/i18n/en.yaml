@@ -1,0 +1,78 @@
+# ===== title =====
+archive:
+  other: "Archive"
+
+tags:
+  other: "Tags"
+
+categories:
+  other: "Categories"
+
+# ===== footer =====
+powered:
+  other: "Powered by %s"
+
+theme:
+  other: "Theme"
+
+pagePV:
+  other: "%s times read"
+
+# ===== post =====
+prevPage:
+  other: "Previous"
+
+nextPage:
+  other: "Next"
+
+prevPost:
+  other: "Previous"
+
+nextPost:
+  other: "Next"
+
+toc:
+  other: "Contents"
+
+readMore:
+  other: "Read more..."
+
+wordCount:
+  one: "{{ .Count }} word"
+  other: "{{ .Count }} words"
+
+readingTime:
+  one: "{{ .Count }} min read"
+  other: "{{ .Count }} mins read"
+
+# ===== content license =====
+author:
+  other: "Author"
+
+markdown:
+  other: "Markdown"
+
+seeMarkDown:
+  other: "The Markdown version »"
+
+license:
+  other: "License"
+
+# ===== counter =====
+archiveCounter:
+  one: "{{ .Count }} Post In Total"
+  other: "{{ .Count }} Posts In Total"
+
+tagCounter:
+  one: "{{ .Count }} Tag In Total"
+  other: "{{ .Count }} Tags In Total"
+
+zeroTagCounter:
+  other: "No tags"
+
+categoryCounter:
+  one: "{{ .Count }} Category In Total"
+  other: "{{ .Count }} Categories In Total"
+
+zeroCategoryCounter:
+  other: "No categories"
