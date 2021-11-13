@@ -1,103 +1,38 @@
 baseurl = "https://benbailey.me/"
 languageCode = "en-us"
-title = "benfb"
-theme = "even"
-# pygmentsstyle = "autumn"
-# pygmentscodefences = true
-# publishdir = "www"
+title = "Ben Bailey"
+theme = "etch"
 
-[permalinks]
-    post = "/:year/:month/:filename/"
+[params]
+  description = "DevOps in Austin at Pingboard. Occasionally baseball at [25th Man](https://25thman.com)."
+  highlight = true
+  dark = "auto"
+  dateFormatToUse = "2006-01-02"
 
-# [params]
-#     home = "Home"
-#     rss = true
-#     email = "mailto:bennettbailey@gmail.com"
-#     twitter = "https://twitter.com/bennett"
-#     github = "https://github.com/benfb"
-#     paginate = 10
-
-# [outputs]
-# home = ["HTML", "RSS"]
-# home = ["HTML", "RSS", "JSON"]
-
-
-defaultContentLanguage = "en"
-preserveTaxonomyNames = true
-enableRobotsTXT = true
-enableEmoji = true
-enableGitInfo = false
-
-# Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 pygmentsOptions = "linenos=table"
 pygmentsCodefences = true
 pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
-
-paginate = 5
 
 [author]
   name = "Ben Bailey"
 
-[sitemap]
-  changefreq = "weekly"
-  priority = 0.5
-  filename = "sitemap.xml"
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "posts"
+    title = "posts"
+    url = "/"
+    weight = 10
 
-[[menu.main]]
-  name = "Home"
-  weight = 10
-  identifier = "home"
-  url = "/"
-[[menu.main]]
-  name = "About"
-  weight = 20
-  identifier = "about"
-  url = "https://about.benbailey.me"
-[[menu.main]]
-  name = "Archive"
-  weight = 30
-  identifier = "archive"
-  url = "/post/"
+  [[menu.main]]
+    identifier = "about"
+    name = "about"
+    title = "about"
+    url = "https://about.benbailey.me"
+    weight = 20
 
-[params]
-  # site info (optional)
-  description = "DevOps in Austin at Pingboard. Occasionally baseball at [25th Man](https://25thman.com)."
-
-  # paginate of archives, tags and categories
-  archivePaginate = 50
-
-  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
-  dateFormatToUse = "2006-01-02"
-
-  # show word count and read time ?
-  moreMeta = false
-
-  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
-  toc = false
-  autoCollapseToc = false   # Auto expand and collapse toc
-
-  uglyURLs = false
-
-  [params.social]
-    a-email = "mailto:bennettbailey@gmail.com"
-    c-twitter = "https://twitter.com/bennett"
-    g-github = "https://github.com/benfb"
-
-[privacy]
-  [privacy.youtube]
-    privacyEnhanced = true
-
-# see https://gohugo.io/getting-started/configuration-markup
 [markup]
   [markup.tableOfContents]
     startLevel = 1
   [markup.goldmark.renderer]
     unsafe = true
-
-[outputs]
- home = ["HTML", "RSS"]
- page = ["HTML"]
- section = ["HTML", "RSS"]
- taxonomy = ["HTML", "RSS"]
- taxonomyTerm = ["HTML"]
