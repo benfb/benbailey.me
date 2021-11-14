@@ -1,11 +1,11 @@
 [[redirects]]
-  from = "https://benb.dev"
-  to = "https://benbailey.me"
+  from = "https://benb.dev/*"
+  to = "https://benbailey.me/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://about.benbailey.me"
-  to = "https://benbailey.me/about"
+  to = "/about"
   status = 301
   force = true
