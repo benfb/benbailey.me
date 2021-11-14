@@ -28,7 +28,7 @@ pygmentsUseClasses = true
     identifier = "about"
     name = "about"
     title = "about"
-    url = "https://about.benbailey.me"
+    url = "/about"
     weight = 20
 
 [markup]
