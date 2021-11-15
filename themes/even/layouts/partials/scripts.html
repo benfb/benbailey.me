@@ -1,5 +1,0 @@
-<!-- core -->
-{{ $even := resources.Get "js/even.js" }}
-{{ $main := resources.Get "js/main.js" }}
-{{ $js := slice $even $main | resources.Concat "js/main.js" | minify | fingerprint }}
-<script type="text/javascript" src="{{ $js.RelPermalink }}"></script>
