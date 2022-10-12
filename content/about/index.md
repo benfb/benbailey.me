@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-I'm a Devops and Data Engineer at Pingboard, currently in Western Massachusetts by way of Austin. Occasionally, I write about baseball at [25th Man](https://25thman.com). You can get in touch with me via [GitHub](https://github.com/benfb), [Twitter](https://twitter.com/bennett), or [Email](mailto://bennettbailey@gmail.com).
+I'm a Senior Platform Engineer at [Pingboard](https://pingboard.com) and a Technical Contributor at [Baseball Prospectus](https://www.baseballprospectus.com), currently in Western Massachusetts by way of Austin. Occasionally, I write about baseball at [25th Man](https://25thman.com). You can get in touch with me via [GitHub](https://github.com/benfb), [Twitter](https://twitter.com/bennett), or [Email](mailto://bennettbailey@gmail.com).
 
 ## Past projects
 ### [Libra](https://github.com/underarmour/libra)
