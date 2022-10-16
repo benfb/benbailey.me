@@ -13,6 +13,9 @@ pygmentsOptions = "linenos=table"
 pygmentsCodefences = true
 pygmentsUseClasses = true
 
+[permalinks]
+  posts = '/:title/'
+
 [author]
   name = "Ben Bailey"
 
