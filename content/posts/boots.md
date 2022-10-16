@@ -2,6 +2,7 @@
 date: "2022-10-16T18:39:59-04:00"
 title: "Boots"
 draft: false
+summary: "How do I better inhabit the place in which I live?"
 ---
 
 > “Do you know where “policeman” comes from, sir? Vimes hadn’t. “Polis” used to mean “city”, said Carrot. That’s what policeman means: “a man for the city.” (Terry Pratchett, *Men At Arms*)
