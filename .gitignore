@@ -4,3 +4,4 @@ themes/even/resources/_gen
 public
 hugo_stats.json
 www
+.hugo_build.lock
