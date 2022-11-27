@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "Ben Bailey"
 theme = "etch"
 
+[params]
+mastodonUrl = "https://mastodon.social/@benfb"
+
 pygmentsOptions = "linenos=table"
 pygmentsCodefences = true
 pygmentsUseClasses = true
