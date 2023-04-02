@@ -2,6 +2,7 @@
 date: "2022-12-11"
 title: "Contending Teams Which Have Had Worse Offseasons Than the Cubs So Far"
 draft: false
+summary: "It's frustrating, but it's too early to panic."
 ---
 
 Here is a chart of the mood of Cubs Twitter since [Mark Feinsand’s report that the Cubs might sign two free-agent shortstops this winter](https://twitter.com/Feinsand/status/1599971336226754560?ref_src=twsrc%5Etfw): 📉
