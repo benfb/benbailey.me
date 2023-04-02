@@ -2,9 +2,15 @@
 title: "About"
 ---
 
-I'm a Senior Platform Engineer at [Pingboard](https://pingboard.com) and a Technical Contributor at [Baseball Prospectus](https://www.baseballprospectus.com), currently in Western Massachusetts by way of Austin. Occasionally, I write about baseball at [25th Man](https://25thman.com). You can get in touch with me via [GitHub](https://github.com/benfb), [Twitter](https://twitter.com/bennett), or [Email](mailto://bennettbailey@gmail.com).
+I'm a Senior Platform Engineer at [Pingboard](https://pingboard.com), currently in Western Massachusetts by way of Austin. I write about baseball, data, technology, and anything else that catches my interest. You can get in touch with me via [GitHub](https://github.com/benfb), [Twitter](https://twitter.com/bennett), [Mastodon](https://mastodon.social/@benfb), or [Email](mailto://bennettbailey@gmail.com).
 
 ## Past projects
+### [Baseball Prospectus](https://www.baseballprospectus.com)
+Various data-related projects as a technical contributor at Baseball Prospectus.
+
+### [25th Man](https://25thman.com)
+An analytically-minded, Cubs-centric baseball blog.
+
 ### [Libra](https://github.com/underarmour/libra)
 A container autoscaler for Hashicorp's [Nomad](https://www.nomadproject.io), developed during an internship at Under Armour.
 
@@ -19,4 +25,3 @@ I worked on the infrastructure for [Uncommon](https://bb.place/uncommon/), movin
 
 ### [Losing My Recs](https://losingmyrecs.benb.dev)
 A simple site that gives you a music recommendation from LCD Soundystem's [Losing My Edge](https://www.youtube.com/watch?v=6xG4oFny2Pk).
-
