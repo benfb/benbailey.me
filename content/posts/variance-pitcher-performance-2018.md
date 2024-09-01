@@ -1,0 +1,33 @@
+---
+title: "Variance and Pitcher Performance in 2018"
+date: 2019-02-25T13:16:03-06:00
+author: "Ben Bailey"
+subtitle: "What is the effect of velocity consistency between outings on pitcher peformance?"
+---
+
+The 2018 Los Angeles Dodgers began their season by being shutout 1-0 by the San Fransisco Giants at home. The next night began similarly, featuring a pitchers' duel between Johnny Cueto and Alex Wood. With the game still tied and each team held to a lone hit going into the top of the ninth, the Dodgers summoned their best bullpen weapon. Kenley Jansen has established a reputation as one of the most dominant closers in baseball over the last few years, largely due to his magnificent cutter. Although Jansen doesn't project a typically aggressive closer mentality on the mound, he has been among the best in the game for a while now, and the Dodgers are now trusting him to keep the Giants at bay to avoid starting the season with consecutive losses to their rivals at home. The crowd has faith in Jansen; he is their closer, and he has proven himself many times over in similar situations.
+
+The entrance of a closer into a close game is one of the more dramatic moments that baseball treats fans to on a regular basis. Despite evidence to the contrary, it's hard not to get swept up in the idea that this is the climax of the game. Even in today's era of shifting roles and anonymous relievers, fans still have favorite pitchers that they want to see coming out of the bullpen, and Jansen is toward the top of the list.
+
+Giants' second baseman Joe Panik (who will go on to post a 75 wRC+ this season) steps into the batter's box and receives the first pitch from Jansen: an 88 MPH cutter, nearly five MPH below his season average. This drop is cause for some concern, but it is possible that it was just a blip, or that the lower velocity won't have an effect on the Giants' success against Jansen. The tension does not last for long, as Panik hits the second pitch (a 90 MPH cutter) for a home run.[^1] Jansen would get out of the inning without further damage, but his average cutter velocity (89.83 MPH) was the lowest since 4/1/16. He just didn't have it that day.
+
+Sometimes, a reliever will come out of the pen throwing a bit harder than normal. Others, it will seem like he just doesn't have the feel for the pitch he's best known for. Some pitchers are more consistent in their velocity than others, and I wanted to come up with one number to compare pitchers to their peers.
+
+To get this metric, I took a list of all pitchers who pitched in 2018. For each pitcher, I calculated the average velocity of each of his pitches in each of his outings. I then calculated the coefficient of variation[^2] of that velocity for each of that pitcher's pitches, weighted them by how much he threw each pitch, and summed them to get one composite number for each pitcher. I'll call this metric the velocity coefficient of variance (VCV). VCV+ is just VCV normalized to have 100 be the league average. It's a bit easier to read and contextualize, so I'll be using it in the rest of this piece.[^2]
+
+The full table of VCV data for 2018 is available <a href="https://s3.amazonaws.com/benfb-landing-uploads/2018vcvs.csv">here</a>, but I'll attempt a brief summary of things I found interesting.
+
+The pitcher with the highest VCV+ in 2018 was Brandon Maurer (who had a rough 2018), with 196. AL Wild Card opener Liam Hendriks (190) came in a close second, followed by Mike Fiers (187). The pitcher with the lowest VCV+ in 2018 was Carson Fulmer, who put up a VCV+ of 43 in just eight starts and 32.1 innings. In a larger sample of over fifteen starts, Alex Cobb and Dan Straily both had a VCV+ of 57. Meanwhile, Chris Sale had a VCV+ of 173, likely due to his wild fluctuations in velocity late in the year due to injury and illness.
+
+For those curious, the Red Sox, Rockies, and Braves had the highest CVP, and the Astros, Diamondbacks, and Yankees had the lowest, though it is unlikely that this is something teams are selecting pitchers for.
+
+Perhaps the most interesting finding is the difference between starters and relievers. The mean VCV+ of pitchers who made more than ten starts was 94, or 93 if you raise the bar to 15 starts, while it was 104 for pitchers who made no starts and pitched at least ten innings, and 106 for those who pitched at least 20 innings. In 2018, the average velocity of each pitch in an established reliever's arsenal varied 13% more between outings than that of an established starter. In fact, VCV may have been most strongly correlated with innings pitched (cor = -0.179, p = 0.00006).
+
+VCV in 2018 was significantly coordinated with BB/9 (cor = 0.160, p = 0.0003) and K/9 (cor = 0.140, p = 0.002). In 2017, VCV was similarly significantly correlated with BB/9, but *not* with K/9, so it's safest to assume that BB/9 is the main significant correlation. The correlation of walks to VCV is small. However, the fact that they are correlated makes sense intuitively. Walks are often thought of as wildness and a lack of consistency, so it's not surprising that those pitchers who show a slight lack of consistency in location would also show the same tendency in average velocity. VCV was not significantly correlated with FIP or xFIP.
+
+Next time, I think it would be interesting to see if variation for each pitch correlates to pitch value data at all.
+
+<em>Pitch velocity and usage frequency data from <a href="http://baseballsavant.mlb.com">Baseball Savant</a>. BB/9, K/9, FIP, and xFIP data from <a href="https://www.fangraphs.com">Fangraphs</a>. Data processed with the help of the <a href="https://github.com/BillPetti/baseballr">baseballr</a> and <a href="https://dplyr.tidyverse.org">dplyr</a> R packages. If you want to download the full table of VCV numbers, you can do so <a href="https://s3.amazonaws.com/benfb-landing-uploads/2018vcvs.csv">here</a>.</em>
+
+[^1]: Incidentally, the one run the Giants scored the previous night was also on a solo home run from Panik. After the Jansen game, he would hit two more over the rest of the season.
+[^2]: The coefficient of variation is a way to standardize the standard deviation based on the mean. Because we're using the coefficient of variation instead of the standard deviation, if Kyle Hendricks' mean velocities varied by the same amount as Jordan Hicks', Hendricks' VCV would be higher despite Hicks throwing much harder. (Note: this is not the case--in 2018, Hendricks had a VCV+ of 61, compared to Hicks' 134.)
