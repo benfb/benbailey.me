@@ -11,33 +11,33 @@ pygmentsCodefences = true
 pygmentsUseClasses = true
 
 [permalinks]
-  posts = '/:title/'
+posts = '/:title/'
 
-[author]
-  name = "Ben Bailey"
+[params.author]
+name = "Ben Bailey"
 
 [menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "posts"
-    title = "posts"
-    url = "/"
-    weight = 10
+[[menu.main]]
+identifier = "posts"
+name = "posts"
+title = "posts"
+url = "/"
+weight = 10
 
-  [[menu.main]]
-    identifier = "about"
-    name = "about"
-    title = "about"
-    url = "/about"
-    weight = 20
+[[menu.main]]
+identifier = "about"
+name = "about"
+title = "about"
+url = "/about"
+weight = 20
 
-  [[menu.main]]
-    identifier = "rss"
-    name = "rss"
-    title = "rss"
-    url = "/index.xml"
-    weight = 30
+[[menu.main]]
+identifier = "rss"
+name = "rss"
+title = "rss"
+url = "/index.xml"
+weight = 30
 
 [markup.goldmark.renderer]
-  # Allows HTML in Markdown
-  unsafe = true
+# Allows HTML in Markdown
+unsafe = true
