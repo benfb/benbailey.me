@@ -4,6 +4,7 @@ date: 2023-06-03
 draft: false
 aliases:
 - /2023/06/03/how-i-sync.html
+- /readwise-to-bear-shortcut
 ---
 
 For the past several months, I've been using the [beta version of Bear 2](https://beta.bear.app/t/the-bear-2-beta-is-here/9115) as my note-taking app. I've tried many similar apps over the years (and months), but Bear 2 is currently my favorite. This post isn't about picking a note-taking app, though.
