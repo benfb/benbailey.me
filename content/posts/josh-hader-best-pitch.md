@@ -7,13 +7,13 @@ subtitle: "Why isn't one of baseball's best relievers throwing his best pitch?"
 
 On Wednesday morning, Ken Rosenthal tweeted Josh Hader's stats so far this season:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">And…60 fastballs out of 62. <a href="https://t.co/gXiyGyCLJp">https://t.co/gXiyGyCLJp</a></p>&mdash; Ken Rosenthal (@Ken_Rosenthal) <a href="https://twitter.com/Ken_Rosenthal/status/1113412654960402432?ref_src=twsrc%5Etfw">April 3, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+{{< x id="1113412654960402432" user="Ken_Rosenthal" >}}
 
 The second tweet caught my attention. A 97% four-seam fastball rate is more or less unheard of, even through a small sample. In 2018, Hader threw his fastball 77% of the time, and went to his slider 21% of the time. This year, he's thrown 60 fastballs and one slider. Even Kenley Jansen, one of the game's best relievers who relies primarily on one pitch, threw his cutter just 80.4% of the time last season.
 
 This lopsided pitch mix could be cause for concern in another reliever, but Hader his still been as dominant as ever. So far, he has a 52.9% K-BB% compared to 36.9% in 2018, and a 40.3% swinging-strike rate, more than double last year. Here he is throwing an immaculate inning with nine straight fastballs:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/SmartDownrightArcticfox' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/hader/hader.webm" >}}
 
 Hader seems to be doing this intentionally. So, what could be the reason for Hader's fastball-only repertoire in his first several appearances? Let's examine a few, from least to most likely.
 
@@ -39,7 +39,7 @@ Hader seems to be doing this intentionally. So, what could be the reason for Had
 
     Hader was briefly asked about his early reliance on his fastball by the Milwaukee Journal Sentinel's Tom Haudricourt:
 
-    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Josh Hader talks about relying on his fastball and Christian Yelich coming through again. <a href="https://t.co/zRhldtp66L">pic.twitter.com/zRhldtp66L</a></p>&mdash; Tom (@Haudricourt) <a href="https://twitter.com/Haudricourt/status/1112924292763844608?ref_src=twsrc%5Etfw">April 2, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+    {{< x id="1112924292763844608" user="Haudricourt" >}}
 
     His reasoning is pretty simple: hitters can't seem to deal with his fastball, so why throw anything else? When it stops working, he'll bring out the slider, but he's confident enough in the fastball to throw it almost exclusively until hitters give him a reason not to.
 

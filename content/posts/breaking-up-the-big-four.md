@@ -33,7 +33,7 @@ There's no clear answer as to which of these four players the Cubs would or shou
 
 A little over a year ago, Fangraphs alumnus Jeff Sullivan called Colin Poche [the most unhittable arm in the minors](https://blogs.fangraphs.com/the-most-unhittable-arm-in-the-minors/). This was just after Poche was traded to the Rays. So far this season, he has a 4.96 ERA, with a 4.32 FIP. While those numbers are certainly not great, the more granular numbers suggest he's been a bit unlucky; his xWOBA allowed is the 19th-lowest in baseball (minimum 100 batters faced). Looking at his individual pitches, it seems that his fastball is the key to his success. According to Statcast, it has the most "rise" of any four-seam fastball, and it shows:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/ConcernedAcceptableEastrussiancoursinghounds' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/breaking-up-the-big-four/poche.webm" >}}
 
 Similar to Josh Hader, it seems like hitters can't pick up the fastball out of his hand. The results haven't quite caught up to the underlying numbers yet, but Poche has one of the best rising fastballs in the game, and at this rate he'll be deceiving hitters with high heat for seasons to come.
 

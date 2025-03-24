@@ -25,4 +25,4 @@ On September 18th, Chatwood hit 99.2 MPH on his fastball, his highest mark of th
 
 Here he is striking out a lot of hitters:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/PointlessDefenselessAustralianfreshwatercrocodile' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div><p> <a href="https://gfycat.com/pointlessdefenselessaustralianfreshwatercrocodile-baseball">via Gfycat</a></p>
+{{< video src="/img/please-no-more-extra-innings/chatwood.webm" >}}

@@ -41,20 +41,19 @@ However, despite the decrease in velocity, the spin rate of his four-seamer has 
 Now that we've seen how Boyd's repertoire has changed, we can look at some of his actual pitches from this year.
 
 First, the high-spin four-seam fastball:
-
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/WellgroomedFearlessFrillneckedlizard' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/boyd/WellgroomedFearlessFrillneckedlizard.webm" >}}
 
 Next, two of Boyd's best pitch, the slow slider:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/OffensiveWarpedBabirusa' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/boyd/OffensiveWarpedBabirusa.webm" >}}
 
 Finally, two curveballs:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/PresentFemaleGallinule' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/boyd/PresentFemaleGallinule.webm" >}}
 
 And an overlay of both breaking pitches:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/AcidicFrighteningDikkops' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/boyd/AcidicFrighteningDikkops.webm" >}}
 
 Notice how similar the curveballs and sliders look. Not only do hitters have to deal with Boyd's well-tunneled fastball and slider combination, but even if they identify that a breaking pitch is coming, the curve and the slider move similarly enough that it's hard to differentiate before it's too late. There is only a 4 MPH difference in velocity between the pitches in the gif, but the curve has more depth to it.
 
