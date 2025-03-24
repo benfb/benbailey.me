@@ -45,7 +45,7 @@ Knebel's first two pitches to Rymer Liriano are balls. Counsell then calls for t
 
 The best part about the games from this particular year is that we get to see players get used to the new intentional walk rule. For each of these players, there's a cycle of confusion, disbelief, and reluctant acceptance. Here is former White Sox outfielder Rymer Liriano learning he was being intentionally walked in the ninth inning of the last spring-training game of the season:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/WellmadeJitteryHaddock' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/spring-training-ibbs/liriano.webm" >}}
 
 Knebel strikes out the next two batters without incident, sending the game to the bottom of the ninth. This is the sequence of the events in that half inning:[^1]
 
@@ -54,15 +54,14 @@ Knebel strikes out the next two batters without incident, sending the game to th
 3. Bandy advances to third on a wild pitch
 4. Eric Sogard strikes out
 5. Kirk Nieuwenhuis is intentionally walked
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/FabulousGranularHorseshoecrab' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/spring-training-ibbs/nieuwenhuis.webm" >}}
 6. Mound visit
 7. Nieuwenhuis steals second
 8. Nate Orf is intentionally walked
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/CoarseNextDuckling' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div><p>
 9. Mound visit and pitching change (before which Michael Ynoa receives nine pats from his teammates and manager)
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/BabyishHeavyFoxterrier' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/spring-training-ibbs/moundvisit.webm" >}}
 10. Craig Counsell gets impatient
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/SlightVastAsiandamselfly' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/spring-training-ibbs/counsell.webm" >}}
 11. Kyle Wren wins the game with a single
 
 The walk of Rymer Liriano was clearly strategic, since Counsell only called for it after Knebel threw two balls to start the plate appearance. The walk of Nate Orf was also strategic, as it only came after Nieuwenhuis stole second during the plate appearance.

@@ -40,7 +40,7 @@ He's throwing his sinker and four-seam fastball much more than he did last seaso
 
 Chatwood's best pitch may be his two-seam fastball:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/TautFelineIndianpalmsquirrel' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div><p>
+{{<video src="/img/chatwood/chatwood.webm">}}
 
 This pitch, in combination with the rest of his high-spin arsenal, makes for an uncomfortable at-bat for hitters and provides the basis for a dominant reliever.
 
@@ -53,4 +53,4 @@ If the Cubs do end up trading one of Montgomery or Chatwood, there are cases to 
 A Chatwood trade, then, seems unlikely. However, with Chatwood's improved stuff and Montgomery's cheaper contract and previously-expressed desire to be a starter, it could end up making more sense for the Cubs to trade Montgomery instead. Either way, due to his contract and the struggles of other bullpen arms, the Cubs may have no choice but to keep betting on Tyler Chatwood.
 
 [^1]: Leading the league in a category for a season
-[^2]: Maddon, like other managers, relies heavily on the relievers he feels confident in at any given time (those who find themselves in his circle of trust). 
+[^2]: Maddon, like other managers, relies heavily on the relievers he feels confident in at any given time (those who find themselves in his circle of trust).
