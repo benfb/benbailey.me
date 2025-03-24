@@ -6,7 +6,7 @@ subtitle: "What's in store for the 2020 Cubs?"
 
 *Note: This piece was originally published as part of [Banished to the Pen's](http://www.banishedtothepen.com) season preview series. The blog is a site for fans of the [Effectively Wild](https://blogs.fangraphs.com/category/effectively-wild/) podcast. You can check the rest of the series out [here](http://www.banishedtothepen.com/category/season-previews/). I'll be back with a more normal article next week. Enjoy!*
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/C4W49WMFfeo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{< youtube C4W49WMFfeo >}}
 
 This wasn’t the trajectory this Cubs team was supposed to follow. The team came out of the rebuild ahead of schedule in 2015, and, of course, won it all in 2016. The Cubs were on the precipice of becoming a dynasty. Then, due to a slow start in 2017, the team had to make up ground in the second half, and were steamrolled by the Dodgers after narrowly defeating the Nationals in a memorable Game Five. In 2018, the Cubs won 95 games, but that only earned them a one-game playoff for the division title and a ticket to the Wild Card game, which they lost in extra innings.
 
