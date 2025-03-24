@@ -23,7 +23,7 @@ I'm not sure what the solution is to this issue. It could be chalked up to a sma
 
 I can't resist highlighting Brad Wieck here this week. If you're a Cubs fan, you've probably seen this GIF:
 
-{{< tweet id="1168635198071803906" user="PitchingNinja" >}}
+{{< x id="1168635198071803906" user="PitchingNinja" >}}
 
 But Wieck has more to give this Cubs team than pitching GIFs.
 
@@ -31,7 +31,7 @@ Just a month after coming over in the Carl Edwards Jr. trade, the large lefty se
 
 Wieck throws his new curveball, which Statcast classifies as a knuckle curve, about half a mile-per-hour faster than his old one, but where it really differentiates itself is its spin rate, which is 215 RPM higher. You can see that the Cubs version of the pitch has more depth to it:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/SourGlamorousKitty' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/gio/wieck.webm" >}}
 
 The pitch lab's newest project still has some kinks to work out over the offseason, but the early returns on the spiked curveball are very intriguing.
 

@@ -1,5 +1,0 @@
-[[redirects]]
-from = "https://about.benbailey.me"
-to = "/about"
-status = 301
-force = true

@@ -21,7 +21,7 @@ Yes, the Cubs are good, but they're not great.
 
 The Giants called up submariner Tyler Rogers. He has thrown 24 pitches in the majors, all classified as curveballs by Statcast, though Brooks Baseball says he throws a sinker and a slider. He's the twin brother of Twins reliever Taylor Rogers, which is a nice story. I'm also fascinated by his delivery.
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/UnselfishPaltryKingsnake' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/are-the-cubs-good/rogers.webm" >}}
 
 If I had to guess, I don't think Tyler will be as good as Taylor. But it sure is fun to watch him pitch.
 

@@ -2,7 +2,7 @@
 title: "About"
 ---
 
-I'm a Senior Data Platform Engineer at [Pingboard](https://pingboard.com), currently in Western Massachusetts by way of Austin. I write about baseball, data, technology, and anything else that catches my interest. You can get in touch with me via [GitHub](https://github.com/benfb), [Twitter](https://twitter.com/bennett), [Mastodon](https://mastodon.social/@benfb), or [Email](mailto://bennettbailey@gmail.com).
+I'm a Senior Data Engineer at [Workleap](https://workleap.com), currently in Western Massachusetts by way of Austin. I write about baseball, data, technology, and anything else that catches my interest. You can get in touch with me via [GitHub](https://github.com/benfb), [BlueSky](https://bsky.app/profile/benfb.bsky.social), [Mastodon](https://mastodon.social/@benfb), or [Email](mailto://bennettbailey@gmail.com).
 
 ## Past projects
 ### [Baseball Prospectus](https://www.baseballprospectus.com)

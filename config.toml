@@ -42,3 +42,9 @@ weight = 30
 [markup.goldmark.renderer]
 # Allows HTML in Markdown
 unsafe = true
+
+[privacy]
+[privacy.x]
+disable = false
+enableDNT = true
+simple = false

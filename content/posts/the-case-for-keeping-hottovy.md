@@ -5,7 +5,7 @@ issue: 1
 subtitle: "Also: An intriguing Reds reliever and reinforcing the greatness of Trout"
 ---
 
-With their third pitching coach in as many seasons, the Cubs may have found something special. 
+With their third pitching coach in as many seasons, the Cubs may have found something special.
 
 The Cubs succeeded in 2016 for several reasons, but the most important may have been their starting pitching. Jon Lester and Kyle Hendricks finished second and third (respectively) in Cy Young voting. After a less-successful 2017, the team fired pitching coach Chris Bosio at the behest of Joe Maddon. After parting ways with Bosio, the Cubs brought in Jim Hickey who had previously worked with Joe Maddon in his time with the Rays. Hickey seemed to do a fine job in 2018, but he resigned for personal reasons at the end of the season, going on to join the Dodgers' front office under fellow ex-Ray Andrew Friedman. Left without a pitching coach during the 2018-2019 offseason, the Cubs looked within and promoted their "Run Prevention Coordinator" Tommy Hottovy.
 
@@ -15,7 +15,7 @@ In many ways, Hottovy previously filled the "conduit" role mentioned in Ben Lind
 
 José Quintana is currently putting together his best stretch of starts as a Cub, and possibly one of the best of his career. In his last four starts before Saturday, he struck out 33 and walked only one.
 
-The reason? He's been throwing his sinker higher in the zone. This sounds counterintuitive, but Hottovy is encouraging rotation-mate Kyle Hendricks to do the same. This has allowed Quintana's changeup and curveball to play up, and seems to be confounding hitters thus far. 
+The reason? He's been throwing his sinker higher in the zone. This sounds counterintuitive, but Hottovy is encouraging rotation-mate Kyle Hendricks to do the same. This has allowed Quintana's changeup and curveball to play up, and seems to be confounding hitters thus far.
 
 **Kyle Ryan**
 
@@ -48,7 +48,7 @@ Meet Reds reliever [Lucas Sims](https://www.fangraphs.com/statss.aspx?playerid=1
 
 Sims' best pitch may be his curveball, which can make great hitters like Ronald Acuña look like this:
 
-<div style='position:relative; padding-bottom:calc(56.25% + 44px)'><iframe src='https://gfycat.com/ifr/AnotherFortunateCanadagoose' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>
+{{< video src="/img/the-case-for-keeping-hottovy/sims.webm" >}}
 
 The Reds' righty might not be a shutdown reliever just yet (he still has some walk issues, which can be compounded by the occasional home run) but he certainly has the makings of one.
 
