@@ -1,10 +1,9 @@
 baseurl = "https://benbailey.me/"
-languageCode = "en-us"
+locale = "en-us"
 title = "Ben Bailey"
 theme = "etch"
 
 [params]
-mastodonUrl = "https://mastodon.social/@benfb"
 tinylyticsSiteID = "Nskj6_ssFxxLkBzyxnpi"
 
 pygmentsOptions = "linenos=table"

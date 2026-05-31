@@ -1,6 +1,3 @@
 [submodule "themes/themes/etch"]
 	path = themes/themes/etch
 	url = https://github.com/benfb/etch.git
-[submodule "themes/etch"]
-	path = themes/etch
-	url = https://github.com/benfb/etch.git
