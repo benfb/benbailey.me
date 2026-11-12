@@ -4,6 +4,7 @@ date: 2023-07-09
 draft: false
 aliases:
 - /2023/07/08/cubs-notes.html
+- /cubs-notes-7/8/23/
 ---
 
 The upcoming trade deadline has me thinking about the Cubs’ two most prominent potential trade pieces, Cody Bellinger and Marcus Stroman.

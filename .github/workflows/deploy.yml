@@ -1,33 +1,53 @@
-name: Deploy Worker
+name: Deploy
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: {}
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: "0.169.0"
+  AWS_ACCESS_KEY_ID: benbailey-me-site
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.BUNNY_STORAGE_PASSWORD }}
+  AWS_REGION: NY
+  AWS_ENDPOINT_URL_S3: https://ny-s3.storage.bunnycdn.com
+  BUCKET: benbailey-me-site
 
 jobs:
-  build-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: true
+      - uses: actions/checkout@v7
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f
-        with:
-          hugo-version: "latest"
-          extended: true
+      - name: Install Hugo
+        run: |
+          curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin hugo
+          hugo version
 
       - name: Build
-        run: hugo --minify
+        run: hugo --gc --minify
 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          wranglerVersion: "4.60.0"
+      - name: Deploy to Bunny Storage
+        run: aws s3 sync public/ "s3://$BUCKET/" --delete --no-progress
+
+      - name: Purge Bunny CDN cache
+        env:
+          BUNNY_API_KEY: ${{ secrets.BUNNY_API_KEY }}
+          BUNNY_PULL_ZONE_ID: ${{ vars.BUNNY_PULL_ZONE_ID }}
+        run: |
+          : "${BUNNY_API_KEY:?Set the BUNNY_API_KEY repository secret}"
+          : "${BUNNY_PULL_ZONE_ID:?Set the BUNNY_PULL_ZONE_ID repository variable}"
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --header "AccessKey: $BUNNY_API_KEY" \
+            --header "Content-Type: application/json" \
+            --data '{}' \
+            "https://api.bunny.net/pullzone/$BUNNY_PULL_ZONE_ID/purgeCache"
